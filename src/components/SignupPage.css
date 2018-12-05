@@ -1,0 +1,30 @@
+.SignupPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SignupDiv {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  width: 500px;
+}
+.SignupForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+input {
+  border-radius: 5px;
+  height: 40px;
+}
