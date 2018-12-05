@@ -28,7 +28,7 @@ class App extends Component {
         this.syncCurrentUser(userDoc);
       })
       .catch(err => {
-        console.log("check user ERROE", err);
+        console.log("check user ERROR", err);
         alert("Sorry! Something went wrong");
       });
   }
