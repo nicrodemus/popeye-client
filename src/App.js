@@ -55,8 +55,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <nav className="navbar-user-dropdown">
+          <nav className="navbar-user-dropdown flex">
             <img src="" alt=""/>
             <h1>Popeye</h1>
             <NavLink exact to="/">
@@ -74,7 +73,6 @@ class App extends Component {
               </span>
             )}
           </nav>
-        </header>
 
         <Switch>
           <Route exact path="/" component={HomePage} />
