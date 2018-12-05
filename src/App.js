@@ -28,7 +28,7 @@ class App extends Component {
         this.syncCurrentUser(userDoc);
       })
       .catch(err => {
-        console.log("check user ERROE", err);
+        console.log("check user ERROR", err);
         alert("Sorry! Something went wrong");
       });
   }
@@ -77,7 +77,7 @@ class App extends Component {
           </nav>
         </header>
 
-                <Switch>
+        <Switch>
           <Route exact path="/" component={HomePage} />
           {/* Use "render" instead of "component" to pass props */}
           <Route
