@@ -55,14 +55,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="">
-          <h1>Popeye</h1>
-
-          <nav>
+        <header>
+          <nav className="navbar-user-dropdown">
+            <img src="" alt=""/>
+            <h1>Popeye</h1>
             <NavLink exact to="/">
               Home
             </NavLink>
-            <NavLink to="/phone-list">Our Phones</NavLink>
             {this.state.currentUser ? (
               <span>
                 <b>{this.state.currentUser.email}</b>
@@ -77,7 +76,7 @@ class App extends Component {
           </nav>
         </header>
 
-                <Switch>
+        <Switch>
           <Route exact path="/" component={HomePage} />
           {/* Use "render" instead of "component" to pass props */}
           <Route
