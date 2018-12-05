@@ -58,58 +58,68 @@ class SignupPage extends Component {
             className="SignupForm"
             onSubmit={event => this.handleSubmit(event)}
           >
-            <label>
-              <input
-                size="50"
-                value={this.state.email}
-                onChange={event => this.genericSync(event)}
-                type="email"
-                name="email"
-                placeholder="Email Adress"
-              />
-            </label>
-
-            <label>
-              <input
-                value={this.state.name}
-                onChange={event => this.genericSync(event)}
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
-            </label>
-
-            <label>
-              <input
-                value={this.state.surname}
-                onChange={event => this.genericSync(event)}
-                type="text"
-                name="surname"
-                placeholder="Surname"
-              />
-            </label>
-
-            <label>
-              <input
-                value={this.state.originalPassword}
-                onChange={event => this.genericSync(event)}
-                type="password"
-                name="originalPassword"
-                placeholder="Password"
-              />
-            </label>
-
-            <label>
-              <input
-                value={this.state.phoneNumber}
-                onChange={event => this.genericSync(event)}
-                type="number"
-                name="phoneNumber"
-                placeholder="Phone Number"
-              />
-            </label>
-
-            <button>Sign Up</button>
+            <ul className="flex-outer">
+              <li>
+                <label>
+                  <input
+                    value={this.state.email}
+                    onChange={event => this.genericSync(event)}
+                    type="email"
+                    name="email"
+                    placeholder="Email Adress"
+                  />
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    value={this.state.name}
+                    onChange={event => this.genericSync(event)}
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                  />
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    value={this.state.surname}
+                    onChange={event => this.genericSync(event)}
+                    type="text"
+                    name="surname"
+                    placeholder="Surname"
+                  />
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    value={this.state.originalPassword}
+                    onChange={event => this.genericSync(event)}
+                    type="password"
+                    name="originalPassword"
+                    placeholder="Password"
+                  />
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input
+                    value={this.state.phoneNumber}
+                    onChange={event => this.genericSync(event)}
+                    type="number"
+                    name="phoneNumber"
+                    placeholder="Phone Number"
+                  />
+                </label>
+              </li>
+              <div className="buttonContainer">
+                <button>
+                  <p>Sign Up</p>
+                </button>
+              </div>
+            </ul>
           </form>
         </div>
       </section>
