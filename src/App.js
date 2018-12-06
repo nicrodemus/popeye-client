@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import axios from "axios";
-
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage.js";
+import TattoistList from "./components/TattoistList.js";
 import SignupPage from "./components/SignupPage.js";
 import LoginPage from "./components/LoginPage.js";
 import NotFound from "./components/NotFound.js";
+import LandingPage from "./components/LandingPage.js";
+import MapContainer from "./components/MapContainer.js";
+import GoogleApiWrapperCode from "./components/MapContainer.js";
 
 import "./App.css";
 
@@ -54,10 +58,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <section>
+        <div className="App">
           <nav className="navbar-user-dropdown flex">
-            <img src="" alt=""/>
-            <h1>Popeye</h1>
+            <div className="top-left">
+              <img src="/images/logo-header.svg" alt="logo" />
+            </div>
+
             <NavLink exact to="/">
               Home
             </NavLink>
@@ -74,32 +81,35 @@ class App extends Component {
             )}
           </nav>
 
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          {/* Use "render" instead of "component" to pass props */}
-          <Route
-            path="/signup-page"
-            render={() => (
-              <SignupPage
-                currentuser={this.state.currentUser}
-                onUserChange={userDoc => this.syncCurrentUser(userDoc)}
-              />
-            )}
-          />
-          <Route
-            path="/login-page"
-            render={() => (
-              <LoginPage
-                currentUser={this.state.currentUser}
-                onUserChange={userDoc => this.syncCurrentUser(userDoc)}
-              />
-            )}
-          />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/TattoistList" component={TattoistList} />
+            <Route path="/MapContainer" component={MapContainer} />
+            {/* Use "render" instead of "component" to pass props */}
+            <Route
+              path="/signup-page"
+              render={() => (
+                <SignupPage
+                  currentuser={this.state.currentUser}
+                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
+                />
+              )}
+            />
+            <Route
+              path="/login-page"
+              render={() => (
+                <LoginPage
+                  currentUser={this.state.currentUser}
+                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
+                />
+              )}
+            />
 
-          {/* 404 route LAST */}
-          <Route component={NotFound} />
-        </Switch>
-      </div>
+            {/* 404 route LAST */}
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </section>
     );
   }
 }
