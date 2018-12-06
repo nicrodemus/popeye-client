@@ -12,6 +12,9 @@ import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 
 import "./App.css";
+import Calendar from "./components/Calendar.js";
+import SearchBar from "./components/SearchBar.js";
+import SearchResult from "./components/SearchResult.js";
 
 class App extends Component {
   constructor(props) {
@@ -71,6 +74,7 @@ class App extends Component {
             {this.state.currentUser ? (
               <span>
                 <b>{this.state.currentUser.email}</b>
+                <p>Appointments</p>
                 <button onClick={() => this.logoutClick()}>Log Out</button>
               </span>
             ) : (
@@ -80,21 +84,16 @@ class App extends Component {
               </span>
             )}
           </nav>
+          <section>
+            
+          </section>
 
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/TattoistList" component={TattoistList} />
             <Route path="/MapContainer" component={MapContainer} />
             {/* Use "render" instead of "component" to pass props */}
-            <Route
-              path="/signup-page"
-              render={() => (
-                <SignupPage
-                  currentuser={this.state.currentUser}
-                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
-                />
-              )}
-            />
+    
             <Route
               path="/login-page"
               render={() => (
@@ -104,6 +103,21 @@ class App extends Component {
                 />
               )}
             />
+        
+        
+          <Route path="/search-result" component={SearchResult} />
+          <Route path="/search" component={SearchBar} />
+          <Route path="/calendar" component={Calendar} />
+          {/* Use "render" instead of "component" to pass props */}
+          <Route
+            path="/signup-page"
+            render={() => (
+              <SignupPage
+                currentuser={this.state.currentUser}
+                onUserChange={userDoc => this.syncCurrentUser(userDoc)}
+              />
+            )}
+          />
 
             {/* 404 route LAST */}
             <Route component={NotFound} />
