@@ -36,7 +36,7 @@ class SignupPage extends Component {
       })
       .catch(err => {
         console.log("Signup Page Error", err);
-        alert("Sorry! Something went wrong.");
+        alert("Sorry! Something went wrong. Signup");
       });
   }
 
@@ -114,7 +114,7 @@ class SignupPage extends Component {
                   />
                 </label>
               </li>
-              <div className="buttonContainer">
+              <div className="button-container">
                 <button>
                   <p>Sign Up</p>
                 </button>
