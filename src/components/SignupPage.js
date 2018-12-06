@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./SignupPage.css";
+import { NavLink } from "react-router-dom";
 
 class SignupPage extends Component {
   constructor(props) {
@@ -53,74 +54,74 @@ class SignupPage extends Component {
     return (
       <section className="SignupPage">
         <h2>Create an Account</h2>
-        <div className="SignupDiv">
+        <div className="signup-div">
           <form
-            className="SignupForm"
+            className="signup-form pad-40"
             onSubmit={event => this.handleSubmit(event)}
           >
-            <ul className="flex-outer">
-              <li>
-                <label>
-                  <input
-                    value={this.state.email}
-                    onChange={event => this.genericSync(event)}
-                    type="email"
-                    name="email"
-                    placeholder="Email Adress"
-                  />
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    value={this.state.name}
-                    onChange={event => this.genericSync(event)}
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                  />
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    value={this.state.surname}
-                    onChange={event => this.genericSync(event)}
-                    type="text"
-                    name="surname"
-                    placeholder="Surname"
-                  />
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    value={this.state.originalPassword}
-                    onChange={event => this.genericSync(event)}
-                    type="password"
-                    name="originalPassword"
-                    placeholder="Password"
-                  />
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    value={this.state.phoneNumber}
-                    onChange={event => this.genericSync(event)}
-                    type="number"
-                    name="phoneNumber"
-                    placeholder="Phone Number"
-                  />
-                </label>
-              </li>
-              <div className="button-container">
-                <button>
-                  <p>Sign Up</p>
-                </button>
-              </div>
-            </ul>
+            <label>
+              <input
+                value={this.state.email}
+                onChange={event => this.genericSync(event)}
+                type="email"
+                name="email"
+                placeholder="Email Adress"
+              />
+            </label>
+
+            <label>
+              <input
+                className="margin-top-20"
+                value={this.state.name}
+                onChange={event => this.genericSync(event)}
+                type="text"
+                name="name"
+                placeholder="Name"
+              />
+            </label>
+
+            <label>
+              <input
+                className="margin-top-20"
+                value={this.state.surname}
+                onChange={event => this.genericSync(event)}
+                type="text"
+                name="surname"
+                placeholder="Surname"
+              />
+            </label>
+
+            <label>
+              <input
+                className="margin-top-20"
+                value={this.state.originalPassword}
+                onChange={event => this.genericSync(event)}
+                type="password"
+                name="originalPassword"
+                placeholder="Password"
+              />
+            </label>
+
+            <label>
+              <input
+                className="margin-top-20"
+                value={this.state.phoneNumber}
+                onChange={event => this.genericSync(event)}
+                type="number"
+                name="phoneNumber"
+                placeholder="Phone Number"
+              />
+            </label>
+
+            <button className="button-container margin-top-20">
+              <p>Sign Up</p>
+            </button>
           </form>
+
+          <p>
+            You are already a client?
+            <NavLink to="/login-page"> Log In</NavLink>
+          </p>
         </div>
       </section>
     );

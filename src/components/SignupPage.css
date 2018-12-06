@@ -4,18 +4,17 @@
   align-items: center;
 }
 
-.SignupDiv {
+.signup-div {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  height: 500px;
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
   max-width: 500px;
 }
 
-.SignupForm {
+.signup-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -23,41 +22,15 @@
   padding-right: 50px;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-input {
-  border-radius: 5px;
-  height: 50px;
-  text-align: center;
-}
-
-ul {
-  height: 600px;
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-li {
-  list-style-type: none;
-}
-
-button {
-  height: 50px;
-  width: 200px;
-  border-radius: 10px;
-}
-
 .button-container {
   display: flex;
   justify-content: center;
 }
 
-p {
-  text-transform: uppercase;
+.pad-40 {
+  padding: 40px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
 }

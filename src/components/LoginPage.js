@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import "./LoginPage.css";
 
 class LoginPage extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class LoginPage extends Component {
 
         <div className="login-div">
           <form
-            className="login-form"
+            className="login-form pad-40"
             onSubmit={event => this.handleSubmit(event)}
             >
             
@@ -62,7 +63,7 @@ class LoginPage extends Component {
             </label>
 
             <label>
-              <input
+              <input className="margin-top-20"
                 value={this.state.originalPassword}
                 onChange={event => this.genericSync(event)}
                 type="password"
@@ -70,7 +71,7 @@ class LoginPage extends Component {
                 placeholder="rey@jedi.com"
               />
             </label>
-            <button lassName="button-container">Log In</button>
+            <button className="button-container margin-top-20">Log In</button>
           </form>
         </div>
       </section>

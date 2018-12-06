@@ -6,22 +6,11 @@
   margin-top: 0;
   padding: 0;
 }
+
 h3 {
   margin: 0;
 }
-h3,
-p {
-  color: white;
-  text-align: center;
-}
-input {
-  height: 30px;
-  width: 300px;
-}
-button {
-  height: 30px;
-  width: 50px;
-}
+
 .search {
   background-color: red;
   height: 35px;
