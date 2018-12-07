@@ -4,14 +4,13 @@ import { withRouter } from "react-router";
 
 import axios from "axios";
 
-
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage/HomePage.js";
 import TattoistList from "./components/TattoistList/TattoistList.js";
 import SignupPage from "./components/SignupPage/SignupPage.js";
 import LoginPage from "./components/LoginPage/LoginPage.js";
 import NotFound from "./components/NotFound.js";
-import ResetPassword from "./components/ResetPassword/ResetPassword.js"
+import ResetPassword from "./components/ResetPassword/ResetPassword.js";
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
@@ -26,7 +25,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentUser: null
+      currentUser: null,
+      citySearchQuery: ""
     };
   }
 
@@ -51,6 +51,12 @@ class App extends Component {
     this.setState({ currentUser: userDoc });
   }
 
+  syncSearchedLocation(locationSearchDoc) {
+    this.setState({ citySearchQuery: locationSearchDoc }, () => {
+      console.log(this.state);
+    });
+  }
+
   logoutClick() {
     axios
       .delete("http://localhost:5555/api/logout", { withCredentials: true })
@@ -68,62 +74,78 @@ class App extends Component {
     return (
       <section>
         <div className="App">
+          {this.props.location.pathname !== "/login-page" && (
+            <nav className="navbar-user-dropdown flex">
+              <div className="top-left">
+                <img src="/images/logo-header.svg" alt="logo" />
+              </div>
 
-{this.props.location.pathname !== "/login-page" && 
-          <nav className="navbar-user-dropdown flex">
-            <div className="top-left">
-              <img src="/images/logo-header.svg" alt="logo" />
-            </div>
+              <NavLink exact to="/">
+                Home
+              </NavLink>
+              {this.state.currentUser ? (
+                <span>
+                  <b>{this.state.currentUser.email}</b>
+                  <p>Appointments</p>
+                  <button onClick={() => this.logoutClick()}>Log Out</button>
+                </span>
+              ) : (
+                <span>
+                  <NavLink to="/signup-page">Sign Up</NavLink>
+                  <NavLink to="/login-page"> Log In</NavLink>
+                </span>
+              )}
+            </nav>
+          )}
 
-            <NavLink exact to="/">
-              Home
-            </NavLink>
-            {this.state.currentUser ? (
-              <span>
-                <b>{this.state.currentUser.email}</b>
-                <p>Appointments</p>
-                <button onClick={() => this.logoutClick()}>Log Out</button>
-              </span>
-            ) : (
-              <span>
-                <NavLink to="/signup-page">Sign Up</NavLink>
-                <NavLink to="/login-page"> Log In</NavLink>
-              </span>
-            )}
-          </nav>
-}
-
-          <Switch> {/* Switch is necessary to create routers, I have to put the routers on the Switch */}
-            <Route exact path="/" component={LandingPage} /> {/* path define URL, when I go to that URL it will render that component */}
-            <Route exact path="/TattoistList" component={TattoistList} />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route
+              path="/tattoistlist"
+              render={() => (
+                <TattoistList
+                  currentLocation={this.state.citySearchQuery}
+                  currentuser={this.state.currentUser}
+                />
+              )}
+            />
             <Route path="/MapContainer" component={MapContainer} />
             {/* Use "render" instead of "component" to pass props */}
-    
             <Route
               path="/login-page"
               render={() => (
                 <LoginPage
+                  // CA CEST UNE PROP, INFORMATION DESCENDANTE
                   currentUser={this.state.currentUser}
+                  // CA CEST UNE FONCTION POUR RECUPERER UNE INFO DE LA LOGIN PAGE
                   onUserChange={userDoc => this.syncCurrentUser(userDoc)}
                 />
               )}
             />
-          <Route path="/reset-password" component={ResetPassword} />
-        
-          <Route path="/search-result" component={SearchResult} />
-          <Route path="/search" component={SearchBar} />
-          <Route path="/calendar" component={Calendar} />
-          {/* Use "render" instead of "component" to pass props */}
-          <Route
-            path="/signup-page"
-            render={() => (
-              <SignupPage
-                currentuser={this.state.currentUser}
-                onUserChange={userDoc => this.syncCurrentUser(userDoc)}
-              />
-            )}
-          />
-
+            <Route path="/reset-password" component={ResetPassword} />
+            <Route
+              path="/search"
+              render={() => (
+                <SearchBar
+                  onUserInput={locationSearchDoc =>
+                    this.syncSearchedLocation(locationSearchDoc)
+                  }
+                  currentuser={this.state.currentUser}
+                />
+              )}
+            />
+            component={SearchBar}
+            <Route path="/calendar" component={Calendar} />
+            {/* Use "render" instead of "component" to pass props */}
+            <Route
+              path="/signup-page"
+              render={() => (
+                <SignupPage
+                  currentuser={this.state.currentUser}
+                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
+                />
+              )}
+            />
             {/* 404 route LAST */}
             <Route component={NotFound} />
           </Switch>
