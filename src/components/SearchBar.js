@@ -22,28 +22,25 @@ class SearchBar extends Component {
       handleSubmit(event) {
         // stop the page refresh
         event.preventDefault();
+        // Get the function onUserInput given by app.js to send the search query to app.js
+        const { onUserInput } = this.props;
+        onUserInput(this.state.city);
+
+        
+        this.setState({isSubmitSuccessful: true})
     
         // PUT and POST requests receive a 2nd argument: the info to submit
         // (we are submitting the state we've gathered from the form)
-        axios.get(
-          "http://localhost:5555/api/search-result",
-          this.state,
-          { withCredentials: true }, // FORCE axios to send cookies across domains
-        )
-          .then(response => {
-            console.log("Search city", response.data);
-            this.setState({ isSubmitSuccessful: true });
-          })
-          .catch(err => {
-            console.log("Add Phone ERROR", err);
-            alert("Sorry! Something went wrong.");
-          });
+      
       }
 
   render() {
+
+    console.log(this.props)
+
     if (this.state.isSubmitSuccessful) {
         // redirect back to the phone list page if the form submission worked
-        return <Redirect to="/search-result" />;
+        return <Redirect to="/tattoistlist" />;
       }
     return (
       <section className="SearchBar">
