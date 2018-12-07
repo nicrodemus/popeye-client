@@ -27,10 +27,24 @@ body {
   padding: 0;
 }
 
+/* -----------single css command ----------- */
 .flex {
   display: flex;
 }
 
+.hei-100vh {
+  height: 100vh;
+}
+
+.j-cont-center {
+  justify-content: center;
+}
+
+.white {
+  color:white;
+} 
+
+/* ----------------------------------------- */
 label {
   display: flex;
   flex-direction: column;
@@ -51,6 +65,7 @@ input {
 
 button {
   width: 100%;
-  border-radius: 10px;
-  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #000000;
+  color:white;
 }

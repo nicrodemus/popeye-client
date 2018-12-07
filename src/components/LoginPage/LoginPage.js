@@ -85,7 +85,7 @@ class LoginPage extends Component {
           </div>
 
           <div>
-            <NavLink className="margin-top-20 flex j-cont-center" to="/reset-password">
+            <NavLink className="margin-top-20 flex j-cont-center white" to="/reset-password">
               Forgot your Password?
             </NavLink>
           </div>
