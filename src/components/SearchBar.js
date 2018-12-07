@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -8,7 +9,11 @@ import PlacesAutocomplete, {
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { address: "", adresseToCoordinates: "" };
+    this.state = {
+      address: "",
+      adresseToCoordinates: "",
+      isSubmitSuccessful: false
+    };
   }
 
   handleChange = address => {

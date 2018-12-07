@@ -17,7 +17,11 @@ class TattoistList extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5555/api/tattoistList", { withCredentials: true })
+      .post(
+        "http://localhost:5555/api/tattoistlist",
+        this.props.searchedLocation,
+        { withCredentials: true }
+      )
       .then(response => {
         this.setState({ tattoistData: response.data });
       })
