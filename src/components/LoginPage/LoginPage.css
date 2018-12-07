@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black
 }
 
 .login-div {
@@ -12,6 +13,7 @@
   align-items: center;
   border-radius: 10px;
   max-width: 500px;
+  background-color: white;
 }
 
 .login-form {

@@ -12,6 +12,7 @@ class SignupPage extends Component {
       name: "",
       surname: "",
       originalPassword: "",
+      confirmPassword: "",
       phoneNumber: "",
       currentUser: null
     };
@@ -23,8 +24,16 @@ class SignupPage extends Component {
   }
 
   handleSubmit(event) {
+    const { originalPassword, confirmPassword } = this.state;
+    
     event.preventDefault();
 
+    if (originalPassword !== confirmPassword) {
+
+      alert("Passwords don't match.")
+    } else {
+      // make API call
+ 
     axios
       .post("http://localhost:5555/api/signup", this.state, {
         withCredentials: true
@@ -39,7 +48,9 @@ class SignupPage extends Component {
         console.log("Signup Page Error", err);
         alert("Sorry! Something went wrong. Signup");
       });
+    }
   }
+
 
   render() {
     if (this.props.currentUser) {
@@ -119,10 +130,10 @@ class SignupPage extends Component {
             <label>
               <input
                 className="margin-top-20"
-                value={this.state.originalPassword}
+                value={this.state.confirmPassword}
                 onChange={event => this.genericSync(event)}
                 type="password"
-                name="originalPassword"
+                name="confirmPassword"
                 placeholder="Repeat Password"
               />
             </label>

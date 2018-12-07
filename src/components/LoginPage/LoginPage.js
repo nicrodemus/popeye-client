@@ -43,7 +43,7 @@ class LoginPage extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <section className="LoginPage">
+      <section className="LoginPage hei-100vh">
         <div>
           <div className="login-div">
             <h2>Log in to your account</h2>

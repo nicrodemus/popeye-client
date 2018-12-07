@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
+import { withRouter } from "react-router";
+
 import axios from "axios";
+
+
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage/HomePage.js";
 import TattoistList from "./components/TattoistList/TattoistList.js";
 import SignupPage from "./components/SignupPage/SignupPage.js";
 import LoginPage from "./components/LoginPage/LoginPage.js";
 import NotFound from "./components/NotFound.js";
+import ResetPassword from "./components/ResetPassword/ResetPassword.js"
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
@@ -63,6 +68,8 @@ class App extends Component {
     return (
       <section>
         <div className="App">
+
+{this.props.location.pathname !== "/login-page" && 
           <nav className="navbar-user-dropdown flex">
             <div className="top-left">
               <img src="/images/logo-header.svg" alt="logo" />
@@ -84,12 +91,10 @@ class App extends Component {
               </span>
             )}
           </nav>
-          <section>
-            
-          </section>
+}
 
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
+          <Switch> {/* Switch is necessary to create routers, I have to put the routers on the Switch */}
+            <Route exact path="/" component={LandingPage} /> {/* path define URL, when I go to that URL it will render that component */}
             <Route exact path="/TattoistList" component={TattoistList} />
             <Route path="/MapContainer" component={MapContainer} />
             {/* Use "render" instead of "component" to pass props */}
@@ -103,7 +108,7 @@ class App extends Component {
                 />
               )}
             />
-        
+          <Route path="/reset-password" component={ResetPassword} />
         
           <Route path="/search-result" component={SearchResult} />
           <Route path="/search" component={SearchBar} />
@@ -128,4 +133,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
