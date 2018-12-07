@@ -3,19 +3,21 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
 import axios from "axios";
+import "./App.css";
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage/HomePage.js";
 import TattoistList from "./components/TattoistList/TattoistList.js";
+// -------------------------------------------
 import SignupPage from "./components/SignupPage/SignupPage.js";
 import LoginPage from "./components/LoginPage/LoginPage.js";
 import NotFound from "./components/NotFound.js";
 import ResetPassword from "./components/ResetPassword/ResetPassword.js";
+// -------------------------------------------
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 import TattoistDetails from "./components/TattoistDetails.js";
-import "./App.css";
 import Calendar from "./components/Calendar.js";
 import PlacesAutocomplete from "react-places-autocomplete";
 import SearchBar from "./components/SearchBar.js";

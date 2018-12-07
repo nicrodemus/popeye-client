@@ -58,7 +58,7 @@ class LoginPage extends Component {
                   onChange={event => this.genericSync(event)}
                   type="email"
                   name="email"
-                  placeholder="rey@jedi.com"
+                  placeholder="Email address:"
                 />
               </label>
 
@@ -69,7 +69,7 @@ class LoginPage extends Component {
                   onChange={event => this.genericSync(event)}
                   type="password"
                   name="originalPassword"
-                  placeholder="rey@jedi.com"
+                  placeholder="Password:"
                 />
               </label>
 
