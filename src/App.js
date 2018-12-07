@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import axios from "axios";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import HomePage from "./components/HomePage.js";
-import TattoistList from "./components/TattoistList.js";
-import SignupPage from "./components/SignupPage.js";
-import LoginPage from "./components/LoginPage.js";
+import HomePage from "./components/HomePage/HomePage.js";
+import TattoistList from "./components/TattoistList/TattoistList.js";
+import SignupPage from "./components/SignupPage/SignupPage.js";
+import LoginPage from "./components/LoginPage/LoginPage.js";
 import NotFound from "./components/NotFound.js";
-import LandingPage from "./components/LandingPage.js";
+import LandingPage from "./components/LandingPage/LandingPage.js";
 import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 
@@ -86,7 +86,7 @@ class App extends Component {
             ) : (
               <span>
                 <NavLink to="/signup-page">Sign Up</NavLink>
-                <NavLink to="/login-page">Log In</NavLink>
+                <NavLink to="/login-page"> Log In</NavLink>
               </span>
             )}
           </nav>
