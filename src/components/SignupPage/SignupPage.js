@@ -53,25 +53,17 @@ class SignupPage extends Component {
 
     return (
       <section className="SignupPage">
-        <h2>Create an Account</h2>
         <div className="signup-div">
+        <h2>Create an Account</h2>
+        
           <form
             className="signup-form pad-40"
             onSubmit={event => this.handleSubmit(event)}
           >
-            <label>
-              <input
-                value={this.state.email}
-                onChange={event => this.genericSync(event)}
-                type="email"
-                name="email"
-                placeholder="Email Adress"
-              />
-            </label>
 
             <label>
               <input
-                className="margin-top-20"
+                className=""
                 value={this.state.name}
                 onChange={event => this.genericSync(event)}
                 type="text"
@@ -94,6 +86,28 @@ class SignupPage extends Component {
             <label>
               <input
                 className="margin-top-20"
+                value={this.state.phoneNumber}
+                onChange={event => this.genericSync(event)}
+                type="number"
+                name="phoneNumber"
+                placeholder="Phone Number"
+              />
+            </label>
+
+            <label>
+              <input
+               className="margin-top-20"
+                value={this.state.email}
+                onChange={event => this.genericSync(event)}
+                type="email"
+                name="email"
+                placeholder="Email Adress"
+              />
+            </label>
+
+            <label>
+              <input
+                className="margin-top-20"
                 value={this.state.originalPassword}
                 onChange={event => this.genericSync(event)}
                 type="password"
@@ -105,11 +119,11 @@ class SignupPage extends Component {
             <label>
               <input
                 className="margin-top-20"
-                value={this.state.phoneNumber}
+                value={this.state.originalPassword}
                 onChange={event => this.genericSync(event)}
-                type="number"
-                name="phoneNumber"
-                placeholder="Phone Number"
+                type="password"
+                name="originalPassword"
+                placeholder="Repeat Password"
               />
             </label>
 
@@ -119,7 +133,7 @@ class SignupPage extends Component {
           </form>
 
           <p>
-            You are already a client?
+            Already a client?
             <NavLink to="/login-page"> Log In</NavLink>
           </p>
         </div>
