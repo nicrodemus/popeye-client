@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./TattoistList.css";
+import { Switch, Route, Link } from "react-router-dom";
+
+function getTattoistUrl(oneTattoist) {
+  return `/tattoistList/${oneTattoist._id}`;
+}
 
 class TattoistList extends Component {
   constructor(props) {
@@ -29,17 +34,19 @@ class TattoistList extends Component {
         <ul>
           {tattoistData.map(oneTattoist => {
             return (
-              <div className="Tattoist-box">
-                <li key={oneTattoist._id}>
+              <div key={oneTattoist._id} className="Tattoist-box">
+                <ls>
                   <div className="tattoistImage">
                     <img src={oneTattoist.picture} alt={oneTattoist.fullName} />
                   </div>
-                  <h1>{oneTattoist.fullName}</h1>
+                  <Link to={getTattoistUrl(oneTattoist)}>
+                    <h1>{oneTattoist.fullName}</h1>
+                  </Link>
                   <h3>{oneTattoist.adress}</h3>
                   <button className="appointmentList">
                     Take An Appointment
                   </button>
-                </li>
+                </ls>
               </div>
             );
           })}

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage.js";
 import TattoistList from "./components/TattoistList.js";
+import TattoistDetails from "./components/TattoistDetails.js";
 import SignupPage from "./components/SignupPage.js";
 import LoginPage from "./components/LoginPage.js";
 import NotFound from "./components/NotFound.js";
@@ -84,16 +85,18 @@ class App extends Component {
               </span>
             )}
           </nav>
-          <section>
-            
-          </section>
+          <section />
 
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/TattoistList" component={TattoistList} />
-            <Route path="/MapContainer" component={MapContainer} />
+            <Route exact path="/tattoistList" component={TattoistList} />
+            <Route path="/mapContainer" component={MapContainer} />
+            <Route
+              path="/tattoistList/:tattoistId"
+              component={TattoistDetails}
+            />
             {/* Use "render" instead of "component" to pass props */}
-    
+
             <Route
               path="/login-page"
               render={() => (
@@ -103,21 +106,20 @@ class App extends Component {
                 />
               )}
             />
-        
-        
-          <Route path="/search-result" component={SearchResult} />
-          <Route path="/search" component={SearchBar} />
-          <Route path="/calendar" component={Calendar} />
-          {/* Use "render" instead of "component" to pass props */}
-          <Route
-            path="/signup-page"
-            render={() => (
-              <SignupPage
-                currentuser={this.state.currentUser}
-                onUserChange={userDoc => this.syncCurrentUser(userDoc)}
-              />
-            )}
-          />
+
+            <Route path="/search-result" component={SearchResult} />
+            <Route path="/search" component={SearchBar} />
+            <Route path="/calendar" component={Calendar} />
+            {/* Use "render" instead of "component" to pass props */}
+            <Route
+              path="/signup-page"
+              render={() => (
+                <SignupPage
+                  currentuser={this.state.currentUser}
+                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
+                />
+              )}
+            />
 
             {/* 404 route LAST */}
             <Route component={NotFound} />
