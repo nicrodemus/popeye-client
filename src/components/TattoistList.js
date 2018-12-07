@@ -9,6 +9,11 @@ class TattoistList extends Component {
       tattoistData: []
     };
   }
+
+
+
+
+
   componentDidMount() {
     axios
       .get("http://localhost:5555/api/tattoistList", { withCredentials: true })
@@ -20,9 +25,19 @@ class TattoistList extends Component {
         alert("Something went wrong with the tatoo list");
       });
   }
+
+
+
   render() {
+
+
+    console.log("THESE ARE MY PROPS",this.props);
     console.log(this.state);
     const { tattoistData } = this.state;
+
+
+
+
     return (
       <section className="TattoistList">
         <h1>this is the Tattoist list</h1>

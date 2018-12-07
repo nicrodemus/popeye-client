@@ -21,7 +21,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentUser: null
+      currentUser: null,
+      citySearchQuery: ""
     };
   }
 
@@ -44,6 +45,11 @@ class App extends Component {
   // (must be defined in App.js since it's the owner of "currentUser" now)
   syncCurrentUser(userDoc) {
     this.setState({ currentUser: userDoc });
+  }
+
+  syncSearchedLocation(locationSearchDoc) {
+    this.setState({ citySearchQuery: locationSearchDoc }, ()=> {console.log(this.state)});
+  
   }
 
   logoutClick() {
@@ -90,23 +96,45 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/TattoistList" component={TattoistList} />
-            <Route path="/MapContainer" component={MapContainer} />
-            {/* Use "render" instead of "component" to pass props */}
+
+             <Route path="/tattoistlist"
+                  render={() => (
+                    <TattoistList
+                    currentLocation={this.state.citySearchQuery}
+                    currentuser={this.state.currentUser}
+                    />)}
+                    />
+
+
+                    <Route path="/MapContainer" component={MapContainer} />
+                    {/* Use "render" instead of "component" to pass props */}
     
             <Route
               path="/login-page"
               render={() => (
                 <LoginPage
+                // CA CEST UNE PROP, INFORMATION DESCENDANTE
                   currentUser={this.state.currentUser}
+                  // CA CEST UNE FONCTION POUR RECUPERER UNE INFO DE LA LOGIN PAGE
                   onUserChange={userDoc => this.syncCurrentUser(userDoc)}
                 />
               )}
             />
         
         
-          <Route path="/search-result" component={SearchResult} />
-          <Route path="/search" component={SearchBar} />
+          <Route path="/search"
+                  render={() => (
+                    <SearchBar
+                      onUserInput={locationSearchDoc => this.syncSearchedLocation(locationSearchDoc)}
+                      currentuser={this.state.currentUser}
+                    />)}
+                    />
+          
+          
+          
+          
+          component={SearchBar} 
+
           <Route path="/calendar" component={Calendar} />
           {/* Use "render" instead of "component" to pass props */}
           <Route
