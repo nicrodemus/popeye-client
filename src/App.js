@@ -18,10 +18,11 @@ import LandingPage from "./components/LandingPage/LandingPage.js";
 import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 import TattoistDetails from "./components/TattoistDetails.js";
-import Calendar from "./components/Calendar.js";
+import Dnd from "./components/CalendarPage/Calendar.js"
 import PlacesAutocomplete from "react-places-autocomplete";
 import SearchBar from "./components/SearchBar.js";
 import SearchResult from "./components/SearchResult.js";
+
 
 class App extends Component {
   constructor(props) {
@@ -147,7 +148,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/calendar" component={Calendar} />
+            <Route path="/calendar" component={Dnd} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
@@ -169,7 +170,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/calendar" component={Calendar} />
+            <Route path="/calendar" component={Dnd} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
