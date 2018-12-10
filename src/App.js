@@ -13,6 +13,9 @@ import SignupPage from "./components/SignupPage/SignupPage.js";
 import LoginPage from "./components/LoginPage/LoginPage.js";
 import NotFound from "./components/NotFound.js";
 import ResetPassword from "./components/ResetPassword/ResetPassword.js";
+
+import TattoistSignupPage from "./components/TattoistSignupPage/TattoistSignupPage.js";
+import TattoistLoginPage from "./components/TattoistLoginPage/TattoistLoginPage.js";
 // -------------------------------------------
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import MapContainer from "./components/MapContainer.js";
@@ -69,7 +72,7 @@ class App extends Component {
       })
       .catch(err => {
         console.log("Logout ERROR", err);
-        alert("Sorry! Something went wrong.");
+        alert("Sorry! Something went wrong. Logout");
       });
   }
 
@@ -88,7 +91,7 @@ class App extends Component {
               </NavLink>
               {this.state.currentUser ? (
                 <span>
-                  <b>{this.state.currentUser.email}</b>
+                  <b>{this.state.currentUser.name}</b>
                   <p>Appointments</p>
                   <button onClick={() => this.logoutClick()}>Log Out</button>
                 </span>
@@ -96,12 +99,15 @@ class App extends Component {
                 <span>
                   <NavLink to="/signup-page">Sign Up</NavLink>
                   <NavLink to="/login-page">Log In</NavLink>
+                  <NavLink to="/tattoist-signup-page">Are you Tattoist?</NavLink>
                 </span>
               )}
             </nav>
           )}
 
+          {/* --------------------------------------------------- */}
           <Switch>
+            {/* Route is important: allow you to define the URL in "path"*/}
             <Route exact path="/" component={LandingPage} />
 
             <Route path="/mapContainer" component={MapContainer} />
@@ -123,6 +129,30 @@ class App extends Component {
 
             <Route path="/MapContainer" component={MapContainer} />
             {/* Use "render" instead of "component" to pass props */}
+
+            {/* --------------------------- Signups ------------------------ */}
+
+            <Route
+              path="/signup-page"
+              render={() => (
+                <SignupPage
+                  currentuser={this.state.currentUser}
+                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
+                />
+              )}
+            />
+
+            <Route
+              path="/tattoist-signup-page"
+              render={() => (
+                <TattoistSignupPage
+                  currentuser={this.state.currentUser}
+                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
+                />
+              )}
+            />
+
+            {/* --------------------------- Logins ------------------------- */}
             <Route
               path="/login-page"
               render={() => (
@@ -134,6 +164,19 @@ class App extends Component {
                 />
               )}
             />
+
+            <Route
+              path="/tattoist-login-page"
+              render={() => (
+                <TattoistLoginPage
+                  // CA CEST UNE PROP, INFORMATION DESCENDANTE
+                  currentUser={this.state.currentUser}
+                  // CA CEST UNE FONCTION POUR RECUPERER UNE INFO DE LA LOGIN PAGE
+                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
+                />
+              )}
+            />
+
             <Route path="/reset-password" component={ResetPassword} />
             <Route
               path="/search"
@@ -144,17 +187,6 @@ class App extends Component {
                   }
                   currentuser={this.state.currentUser}
                   component={SearchBar}
-                />
-              )}
-            />
-            <Route path="/calendar" component={Calendar} />
-            {/* Use "render" instead of "component" to pass props */}
-            <Route
-              path="/signup-page"
-              render={() => (
-                <SignupPage
-                  currentuser={this.state.currentUser}
-                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
                 />
               )}
             />
@@ -181,6 +213,7 @@ class App extends Component {
               )}
             />
 
+            {/* --------------------------- NotFound ------------------------- */}
             {/* 404 route LAST */}
             <Route component={NotFound} />
           </Switch>
