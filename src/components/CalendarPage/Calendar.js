@@ -26,7 +26,7 @@ class CalendarPage extends Component {
   
 
   handleSelect = ({ start, end }) => {
-    const title = window.prompt('Name your appointment')
+    const title = window.prompt('Name your appointement')
     if (title)
       this.setState({
         events: [
