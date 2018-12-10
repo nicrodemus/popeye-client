@@ -85,5 +85,9 @@ button {
 
 .extra-style {
   padding: 14px 16px;
-  
+}
+
+.padding-l-r-14 {
+  padding-left: 14px;
+  padding-right: 14px;
 }
