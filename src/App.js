@@ -22,6 +22,7 @@ import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 import TattoistDetails from "./components/TattoistDetails.js";
 import Dnd from "./components/CalendarPage/Calendar.js";
+import ClientView from "./components/CalendarPage/ClientCalendar"
 import PlacesAutocomplete from "react-places-autocomplete";
 import SearchBar from "./components/SearchBar.js";
 import SearchResult from "./components/SearchResult.js";
@@ -223,7 +224,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/calendar" component={Dnd} />
+            <Route path="/clientcalendar" component={ClientView} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
