@@ -15,13 +15,13 @@ class TattoistList extends Component {
     };
   }
 
-
-
-
-
   componentDidMount() {
     axios
-      .get("http://localhost:5555/api/tattoistList", { withCredentials: true })
+      .post(
+        "http://localhost:5555/api/tattoistlist",
+        this.props.searchedLocation,
+        { withCredentials: true }
+      )
       .then(response => {
         this.setState({ tattoistData: response.data });
       })
@@ -31,17 +31,10 @@ class TattoistList extends Component {
       });
   }
 
-
-
   render() {
-
-
-    console.log("THESE ARE MY PROPS",this.props);
+    console.log("THESE ARE MY PROPS", this.props);
     console.log(this.state);
     const { tattoistData } = this.state;
-
-
-
 
     return (
       <section className="TattoistList">

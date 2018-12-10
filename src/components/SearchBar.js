@@ -1,64 +1,84 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
 
+class LocationSearchInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      address: "",
+      adresseToCoordinates: "",
+      isSubmitSuccessful: false
+    };
+  }
 
-class SearchBar extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-          city: "",
-          isSubmitSuccessful: false,
-        };
-      }
-    
-      genericSync(event) {
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
-      }
+  handleChange = address => {
+    this.setState({ address });
+  };
 
-    
-      handleSubmit(event) {
-        // stop the page refresh
-        event.preventDefault();
-        // Get the function onUserInput given by app.js to send the search query to app.js
-        const { onUserInput } = this.props;
-        onUserInput(this.state.city);
-
-        
-        this.setState({isSubmitSuccessful: true})
-    
-        // PUT and POST requests receive a 2nd argument: the info to submit
-        // (we are submitting the state we've gathered from the form)
-      
-      }
+  handleSelect = address => {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => {
+        this.setState({ adresseToCoordinates: latLng });
+        this.props.onUserInput(this.state.adresseToCoordinates);
+      })
+      .catch(error => console.error("Error", error));
+  };
 
   render() {
-
-    console.log(this.props)
-
-    if (this.state.isSubmitSuccessful) {
-        // redirect back to the phone list page if the form submission worked
-        return <Redirect to="/tattoistlist" />;
-      }
     return (
-      <section className="SearchBar">
-        <h2>Search Bar</h2>
-        <p>Welcome to Popeye platform!</p>
-         <form onSubmit={event => this.handleSubmit(event)}>
-          <label>
-            <input value={this.state.city}
-                onChange={event => this.genericSync(event)}
-                type="text" name="city" placeholder="Type your city"/>
-          </label>
-
-          <button>Search</button>
-        </form>
-      </section>
-      
+      <div>
+        <Link to="/tattoistlist"> Search </Link>
+        <PlacesAutocomplete
+          value={this.state.address}
+          onChange={this.handleChange}
+          onSelect={this.handleSelect}
+        >
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading
+          }) => (
+            <div>
+              <input
+                {...getInputProps({
+                  placeholder: "Search Places ...",
+                  className: "location-search-input"
+                })}
+              />
+              <div className="autocomplete-dropdown-container">
+                {loading && <div>Loading...</div>}
+                {suggestions.map(suggestion => {
+                  const className = suggestion.active
+                    ? "suggestion-item--active"
+                    : "suggestion-item";
+                  // inline style for demonstration purpose
+                  const style = suggestion.active
+                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                    : { backgroundColor: "#ffffff", cursor: "pointer" };
+                  return (
+                    <div
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style
+                      })}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
+      </div>
     );
   }
 }
-
-export default SearchBar;
+export default LocationSearchInput;

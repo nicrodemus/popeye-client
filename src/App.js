@@ -19,6 +19,7 @@ import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 import TattoistDetails from "./components/TattoistDetails.js";
 import Calendar from "./components/Calendar.js";
+import PlacesAutocomplete from "react-places-autocomplete";
 import SearchBar from "./components/SearchBar.js";
 import SearchResult from "./components/SearchResult.js";
 
@@ -102,22 +103,24 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/tattoistList" component={TattoistList} />
+
             <Route path="/mapContainer" component={MapContainer} />
             <Route
               path="/tattoistList/:tattoistId"
               component={TattoistDetails}
             />
             {/* Use "render" instead of "component" to pass props */}
+
             <Route
               path="/tattoistlist"
               render={() => (
                 <TattoistList
-                  currentLocation={this.state.citySearchQuery}
+                  searchedLocation={this.state.citySearchQuery}
                   currentuser={this.state.currentUser}
                 />
               )}
             />
+
             <Route path="/MapContainer" component={MapContainer} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
@@ -157,7 +160,15 @@ class App extends Component {
             />
 
             <Route path="/search-result" component={SearchResult} />
-            <Route path="/search" component={SearchBar} />
+            <Route
+              path="/search"
+              render={() => (
+                <SearchBar
+                  currentuser={this.state.currentUser}
+                  searchQuery={placeDoc => this.syncSearchQuery(placeDoc)}
+                />
+              )}
+            />
             <Route path="/calendar" component={Calendar} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
