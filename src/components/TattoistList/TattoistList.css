@@ -1,15 +1,27 @@
+.TattoistList {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-start;
+}
+
 li {
-    height: 400px;
-    width: 400px;
-    border: 1px solid black;
-    border-radius: 8px;
-  }
-   .appointmentList {
-    width: 100px;
-    height: 50px;
-  }
-  .tattoistImage {
-    height: 50px;
-    width: 50px;
-    background-color: red;
-  }
+  height: 400px;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 8px;
+  list-style-type: none;
+}
+.appointmentList {
+  width: 100px;
+  height: 50px;
+}
+.tattoistImage {
+  height: 50px;
+  width: 50px;
+  background-color: red;
+}
+.MapContainer {
+  margin-left: 100px;
+  margin-top: 25px;
+}
