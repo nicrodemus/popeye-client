@@ -27,6 +27,8 @@ import PlacesAutocomplete from "react-places-autocomplete";
 import SearchBar from "./components/SearchBar.js";
 import SearchResult from "./components/SearchResult.js";
 
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -224,7 +226,11 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/clientcalendar" component={ClientView} />
+            <Route path="/clientcalendar" 
+              render={() => (
+                <ClientView
+                />
+              )} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
