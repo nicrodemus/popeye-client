@@ -83,7 +83,7 @@ class App extends Component {
     return (
       <section>
         <div className="App">
-          {this.props.location.pathname !== "/login-page" && (
+          {(this.props.location.pathname !== "/login-page" && this.props.location.pathname !== "/tattoist-login-page") && (
             <nav className="navbar-user-dropdown flex">
 
                 <NavLink exact to="/">
@@ -92,28 +92,33 @@ class App extends Component {
 
 
               {this.state.currentUser ? (
-                <span>
-                  <b>{this.state.currentUser.name}</b>
-                  <p>Appointments</p>
-                  <button onClick={() => this.logoutClick()}>Log Out</button>
+                <span className="flex">
+                  <p className="padding-l-r-14">{this.state.currentUser.name}</p>
+                  <p className="padding-l-r-14">Appointments</p>
+                  <button className="extra-style"
+                  onClick={() => this.logoutClick()}>Log Out</button>
                 </span>
               ) : (
+                
                 <span className="flex">
-                  <NavLink to="/signup-page" className="white extra-style">
-                    Sign Up
-                  </NavLink>
-                  <NavLink to="/login-page" className="white extra-style">
-                    Log In
-                  </NavLink>
-
+                  <span className="flex ">
+                    <p>Are you:</p>
+                  </span>
                   {this.props.location.pathname !== "/tattoist-signup-page" && (
                   <NavLink
                     to="/tattoist-signup-page"
-                    className="white extra-style"
-                  >
-                    Are you Tattoist?
+                    className="white extra-style">
+                  Tattoist?
+                  </NavLink>
+                  
+                  )}
+
+                  {this.props.location.pathname !== "/signup-page" && (
+                  <NavLink to="/signup-page" className="white extra-style">
+                  Client?
                   </NavLink>
                   )}
+
                 </span>
               )}
             </nav>

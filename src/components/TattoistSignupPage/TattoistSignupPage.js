@@ -10,6 +10,7 @@ class TattoistSignupPage extends Component {
     this.state = {
       email: "",
       fullName: "",
+      city: "",
       originalPassword: "",
       confirmPassword: "",
       phoneNumber: "",
@@ -34,7 +35,7 @@ class TattoistSignupPage extends Component {
       // make API call
  
     axios
-      .post("http://localhost:5555/api/signup", this.state, {
+      .post("http://localhost:5555/api/tattoist-signup", this.state, {
         withCredentials: true
       })
       .then(response => {
@@ -45,7 +46,7 @@ class TattoistSignupPage extends Component {
       })
       .catch(err => {
         console.log("Signup Page Error", err);
-        alert("Sorry! Something went wrong. Signup");
+        alert("Sorry! Something went wrong. Tattoist signup");
       });
     }
   }
@@ -74,7 +75,7 @@ class TattoistSignupPage extends Component {
             <label>
               <input
                 className=""
-                value={this.state.name}
+                value={this.state.fullName}
                 onChange={event => this.genericSync(event)}
                 type="text"
                 name="fullName"
@@ -101,6 +102,17 @@ class TattoistSignupPage extends Component {
                 type="email"
                 name="email"
                 placeholder="Email Adress"
+              />
+            </label>
+
+            <label>
+              <input
+               className="margin-top-20"
+                value={this.state.city}
+                onChange={event => this.genericSync(event)}
+                type="text"
+                name="city"
+                placeholder="City"
               />
             </label>
 
