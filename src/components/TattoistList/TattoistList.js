@@ -62,7 +62,7 @@ class TattoistList extends Component {
           </ul>
         </div>
         <div onscroll="myScript" className="MapContainer">
-          <MainMapContainer className="map" />
+          <MainMapContainer />
         </div>
       </section>
     );
