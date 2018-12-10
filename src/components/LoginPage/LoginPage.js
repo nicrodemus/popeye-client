@@ -82,6 +82,10 @@ class LoginPage extends Component {
               New to Popeye?
               <NavLink to="/signup-page"> Sign Up</NavLink>
             </p>
+            <p>
+              Are you Tattoist?
+              <NavLink to="/tattoist-signup-page"> Sign Up</NavLink>
+            </p>
           </div>
 
           <div>

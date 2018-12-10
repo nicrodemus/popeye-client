@@ -9,8 +9,7 @@ class TattoistSignupPage extends Component {
 
     this.state = {
       email: "",
-      name: "",
-      surname: "",
+      fullName: "",
       originalPassword: "",
       confirmPassword: "",
       phoneNumber: "",

@@ -21,11 +21,10 @@ import LandingPage from "./components/LandingPage/LandingPage.js";
 import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 import TattoistDetails from "./components/TattoistDetails.js";
-import Dnd from "./components/CalendarPage/Calendar.js"
+import Dnd from "./components/CalendarPage/Calendar.js";
 import PlacesAutocomplete from "react-places-autocomplete";
 import SearchBar from "./components/SearchBar.js";
 import SearchResult from "./components/SearchResult.js";
-
 
 class App extends Component {
   constructor(props) {
@@ -83,13 +82,12 @@ class App extends Component {
         <div className="App">
           {this.props.location.pathname !== "/login-page" && (
             <nav className="navbar-user-dropdown flex">
-              <div className="top-left">
-                <img src="/images/logo-header.svg" alt="logo" />
-              </div>
 
-              <NavLink exact to="/">
-                Home
-              </NavLink>
+                <NavLink exact to="/">
+                  <img src="/images/logo-header.svg" alt="logo" />
+                </NavLink>
+
+
               {this.state.currentUser ? (
                 <span>
                   <b>{this.state.currentUser.name}</b>
@@ -97,10 +95,22 @@ class App extends Component {
                   <button onClick={() => this.logoutClick()}>Log Out</button>
                 </span>
               ) : (
-                <span>
-                  <NavLink to="/signup-page">Sign Up</NavLink>
-                  <NavLink to="/login-page">Log In</NavLink>
-                  <NavLink to="/tattoist-signup-page">Are you Tattoist?</NavLink>
+                <span className="flex">
+                  <NavLink to="/signup-page" className="white extra-style">
+                    Sign Up
+                  </NavLink>
+                  <NavLink to="/login-page" className="white extra-style">
+                    Log In
+                  </NavLink>
+
+                  {this.props.location.pathname !== "/tattoist-signup-page" && (
+                  <NavLink
+                    to="/tattoist-signup-page"
+                    className="white extra-style"
+                  >
+                    Are you Tattoist?
+                  </NavLink>
+                  )}
                 </span>
               )}
             </nav>

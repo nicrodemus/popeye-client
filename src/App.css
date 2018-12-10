@@ -22,14 +22,22 @@ body {
   height: 80px;
   color: #ffffff;
   box-sizing: border-box;
+  justify-content: space-between;
 }
 
 .navbar-user-dropdown .navbar-limiter nav {
   font: 16px Arial, Helvetica, sans-serif;
   line-height: 40px;
-  float: left;
   margin: 0 0 0 60px;
   padding: 0;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }
 
 /* -----------single css command ----------- */
@@ -73,4 +81,9 @@ button {
   border-radius: 5px;
   background-color: #000000;
   color:white;
+}
+
+.extra-style {
+  padding: 14px 16px;
+  
 }
