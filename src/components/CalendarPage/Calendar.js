@@ -40,6 +40,21 @@ class CalendarPage extends Component {
       })
   };
 
+  onSelectEvent(pEvent) {
+    const r = window.confirm("Would you like to remove this event?")
+    if(r === true){
+      
+      this.setState((prevState, props) => {
+        const events = [...prevState.events]
+        const idx = events.indexOf(pEvent)
+        events.splice(idx, 1);
+        return { events };
+      });
+    }
+  }
+
+  
+
   // moveEvent({ event, start, end, isAllDay: droppedOnAllDaySlot }) {
   //   const { events } = this.state
 
@@ -106,7 +121,7 @@ class CalendarPage extends Component {
            views= {['month', 'day', 'week']}
           events={this.state.events}
           style={{ height: "100vh" }}
-          onSelectEvent={event => alert(event.title)}
+          onSelectEvent = {event => this.onSelectEvent(event)}
           onSelectSlot={this.handleSelect}
           
          onEventDrop={event => event.moveEvent}
