@@ -73,7 +73,7 @@ class LoginPage extends Component {
                 />
               </label>
 
-              <button className="button-container margin-top-20">
+              <button className=" margin-top-20">
                 <p>Log In</p>
               </button>
             </form>

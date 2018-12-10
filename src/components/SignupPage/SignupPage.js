@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./SignupPage.css";
-import { NavLink } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 
 class SignupPage extends Component {
   constructor(props) {
@@ -54,12 +54,12 @@ class SignupPage extends Component {
 
   render() {
     if (this.props.currentUser) {
-      return (
-        <section className="SignupPage">
-          <h2>You are signed up!</h2>
-          <p>Welcome, {this.props.currentUser.name}!</p>
-        </section>
-      );
+      return <Redirect to="/" />
+      //   <section className="SignupPage">
+      //     <h2>You are signed up!</h2>
+      //     <p>Welcome, {this.props.currentUser.name}!</p>
+      //   </section>
+      // );
     }
 
     return (
@@ -138,7 +138,7 @@ class SignupPage extends Component {
               />
             </label>
 
-            <button className="button-container margin-top-20">
+            <button className="margin-top-20">
               <p>Sign Up</p>
             </button>
           </form>

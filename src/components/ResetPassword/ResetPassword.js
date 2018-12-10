@@ -62,12 +62,27 @@ class ResetPassword extends Component {
                 />
               </label>
 
-              <button className="button-container margin-top-20">
+              <button className=" margin-top-20">
                 <p>Reset Password</p>
               </button>
             </form>
           </div>
 
+          <div className="flex j-cont-center">
+            <NavLink
+              className="margin-top-20 white"
+              to="/login-page"
+            >
+              Log In
+            </NavLink>
+            <p> or </p> 
+            <NavLink
+              className="margin-top-20 white"
+              to="/signup-page"
+            >
+              Sign Up
+            </NavLink>
+          </div>
         </div>
       </section>
     );
@@ -75,4 +90,3 @@ class ResetPassword extends Component {
 }
 
 export default ResetPassword;
-
