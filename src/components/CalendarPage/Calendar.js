@@ -114,6 +114,8 @@ class CalendarPage extends Component {
     return (
       <div className="App">
         <Calendar
+          min={new Date(2017, 10, 0, 8, 0, 0)}
+          max={new Date(2017, 10, 0, 23, 0, 0)} 
           selectable
           localizer={localizer}
           defaultDate={new Date()}
