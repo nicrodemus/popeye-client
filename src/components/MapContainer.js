@@ -27,13 +27,14 @@ export class MapContainer extends Component {
 
   render() {
     const { coordinates } = this.props;
-    console.log("cooooooooooordinates", coordinates);
     const lng = coordinates[0];
     const lat = coordinates[1];
     return (
       <Map
+
+        options={{scrollwheel: false}}
         google={this.props.google}
-        style={{ width: "200%", height: "200%", position: "relative" }}
+        style={{ width: "40%", height: "60%", position: "relative" }}
         initialCenter={{
           lat: 48.864716,
           lng: 2.349014

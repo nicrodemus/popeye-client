@@ -4,6 +4,9 @@ import "./TattoistList.css";
 import { Switch, Route, Link } from "react-router-dom";
 import MainMapContainer from "../MainMapContainer.js";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import CustomView from "../CalendarPage/ClientCalendar"
+
+
 function getTattoistUrl(oneTattoist) {
   return `/tattoistList/${oneTattoist._id}`;
 }
@@ -56,13 +59,15 @@ class TattoistList extends Component {
                   <button className="appointmentList">
                     Take An Appointment
                   </button>
+                  
+                  <CustomView className="calendar-client"/>
                 </li>
               );
             })}
           </ul>
         </div>
-        <div onscroll="myScript" className="MapContainer">
-          <MainMapContainer />
+        <div className="MapContainer">
+          <MainMapContainer tattoistData={this.state.tattoistData} />
         </div>
       </section>
     );

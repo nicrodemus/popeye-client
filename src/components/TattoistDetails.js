@@ -8,12 +8,19 @@ class TattoistPersonalPage extends Component {
     this.state = {
       //we need the portfolio array to avoid error with  ".map()"
       portfolio: [],
-      coordinate: []
+      coordinates: []
     };
   }
+
+  componentWillMount() {
+    console.log("blah WILL MOUNT", this.state)
+  }
+
   componentDidMount() {
     const { params } = this.props.match;
-    console.log(params.tattoistId);
+
+    console.log("blah DID MOUNT", this.state)
+
     axios
       .get(`http://localhost:5555/api/tattoistList/${params.tattoistId}`, {
         withCredentials: true
@@ -37,7 +44,7 @@ class TattoistPersonalPage extends Component {
             description,
             coordinates: geometry.coordinates
           },
-          () => console.log("thistate", this.state)
+          () => console.log("blah AFTER API", this.state)
         );
       })
       .catch(err => {
@@ -46,7 +53,7 @@ class TattoistPersonalPage extends Component {
       });
   }
   render() {
-    console.log("ggggggggggg", this.state);
+
 
     const {
       _id,
@@ -58,7 +65,6 @@ class TattoistPersonalPage extends Component {
       coordinates
     } = this.state;
 
-    console.log(coordinates);
     return (
       <section className="TattoistDetails">
         <h2>TattoistDetails</h2>
@@ -66,7 +72,8 @@ class TattoistPersonalPage extends Component {
         <h4>{adress}</h4>
         <h4>{description}</h4>
         <MapContainer
-          coordinates={this.state.coordinates}
+          
+          coordinates={coordinates}
           fullName={this.state.fullName}
         />
       </section>
