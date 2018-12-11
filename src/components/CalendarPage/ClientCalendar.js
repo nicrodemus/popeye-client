@@ -52,22 +52,82 @@ MyWeek.title = date => {
   return `My awesome week: ${date.toLocaleDateString()}`
 }
 
-const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
 
 
 
-let CustomView =  props  => (
-    
-    <BigCalendar
-      events={events}
+class CustomView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      events: [
+        {
+          start: new Date(),
+          end: new Date(moment().add(1, "days")),
+          title: "Event example"
+        }
+      ]
+     }
+  }
+
+  handleSelect = ({ start, end }) => {
+    const title = window.prompt('Name your appointement')
+    if (title)
+      this.setState({
+        events: [
+          ...this.state.events,
+          {
+            start,
+            end,
+            title,
+          },
+        ],
+      })
+  };
+
+
+  onSelectEvent(pEvent) {
+    const r = window.confirm("Would you like to remove this event?")
+    if(r === true){
+      
+      this.setState((prevState, props) => {
+        const events = [...prevState.events]
+        const idx = events.indexOf(pEvent)
+        events.splice(idx, 1);
+        return { events };
+      });
+    }
+  }
+
+
+
+  render() { 
+    const localizer = BigCalendar.momentLocalizer(moment);// or globalizeLocalizer
+    return ( 
+      <BigCalendar
+      min={new Date(2017, 10, 0, 9, 0, 0)}
+      max={new Date(2017, 10, 0, 18, 0, 0)} 
+      selectable
       localizer={localizer}
-      defaultView={BigCalendar.Views.WEEK}
       defaultDate={new Date()}
+      defaultView={BigCalendar.Views.WEEK}
       views={{week: MyWeek }}
+      events={this.state.events}
+      style={{ height: "350px", width: "500px" }}
+      onSelectEvent = {event => this.onSelectEvent(event)}
+      onSelectSlot={this.handleSelect}
+      resizable
+      selectRangeFormat= {({start, end}, culture, localizer) =>
+      localizer.format(start, { date: 'short' }, culture) + ' — ' +
+      localizer.format(end, { date: 'short' }, culture)
+  }
     />
-)
+     );
+  }
+}
+ 
+export default CustomView;
 
-export default CustomView
+
 
 
 
