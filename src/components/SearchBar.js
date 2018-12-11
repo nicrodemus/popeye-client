@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./LandingPage/LandingPage.css";
 import axios from "axios";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -32,8 +33,10 @@ class LocationSearchInput extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to="/tattoistlist"> Search </Link>
+      <div className="search-bar">
+        <button>
+          <Link to="/tattoistlist"> Search your tatooist </Link>
+        </button>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}

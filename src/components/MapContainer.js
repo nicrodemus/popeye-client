@@ -34,7 +34,7 @@ export class MapContainer extends Component {
 
         options={{scrollwheel: false}}
         google={this.props.google}
-        style={{ width: "200%", height: "200%", position: "relative" }}
+        style={{ width: "40%", height: "60%", position: "relative" }}
         initialCenter={{
           lat: 48.864716,
           lng: 2.349014

@@ -10,11 +10,19 @@
 h3 {
   margin: 0;
 }
+h3,
+p {
+  color: white;
+}
 
 .search {
-  background-color: red;
   height: 35px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+}
+.search-bar {
+  display: flex;
+  flex-direction: row-reverse;
 }

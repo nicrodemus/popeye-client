@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./LandingPage.css";
+import LocationSearchInput from "../SearchBar.js";
 
 class LandingPage extends Component {
   constructor(props) {
@@ -13,16 +14,7 @@ class LandingPage extends Component {
           <h3>Take an Appointment with your favourite Tattoist!</h3>
           <p>It's simple, quick and free</p>
           <div className="search">
-            <form>
-              <label>
-                <input
-                  type="text"
-                  name="adress"
-                  placeholder="select your location"
-                />
-              </label>
-              <button>Search</button>
-            </form>
+            <LocationSearchInput />
           </div>
         </div>
       </section>
