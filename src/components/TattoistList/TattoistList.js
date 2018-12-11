@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./TattoistList.css";
 import { Switch, Route, Link } from "react-router-dom";
-// import MainMapContainer from "../MainMapContainer.js";
+import MainMapContainer from "../MainMapContainer.js";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 function getTattoistUrl(oneTattoist) {
   return `/tattoistList/${oneTattoist._id}`;
@@ -61,8 +61,8 @@ class TattoistList extends Component {
             })}
           </ul>
         </div>
-        <div onscroll="myScript" className="MapContainer">
-          {/* <MainMapContainer tattoistData={this.state.tattoistData} /> */}
+        <div className="MapContainer">
+          <MainMapContainer tattoistData={this.state.tattoistData} />
         </div>
       </section>
     );

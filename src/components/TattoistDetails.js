@@ -8,7 +8,7 @@ class TattoistPersonalPage extends Component {
     this.state = {
       //we need the portfolio array to avoid error with  ".map()"
       portfolio: [],
-      coordinate: []
+      coordinates: []
     };
   }
   componentDidMount() {
