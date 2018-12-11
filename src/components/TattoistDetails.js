@@ -26,16 +26,19 @@ class TattoistPersonalPage extends Component {
           fullName,
           adress,
           description,
-          coordinate
+          geometry
         } = response.data;
-        this.setState({
-          portfolio,
-          picture,
-          fullName,
-          adress,
-          description,
-          coordinate
-        });
+        this.setState(
+          {
+            portfolio,
+            picture,
+            fullName,
+            adress,
+            description,
+            coordinates: geometry.coordinates
+          },
+          () => console.log("thistate", this.state)
+        );
       })
       .catch(err => {
         console.log("Tattoist details", err);
@@ -43,6 +46,8 @@ class TattoistPersonalPage extends Component {
       });
   }
   render() {
+    console.log("ggggggggggg", this.state);
+
     const {
       _id,
       picture,
@@ -50,18 +55,20 @@ class TattoistPersonalPage extends Component {
       adress,
       description,
       portfolio,
-      coordinate
+      coordinates
     } = this.state;
-    console.log(this.state);
-    console.log(fullName);
-    console.log(portfolio, coordinate);
+
+    console.log(coordinates);
     return (
       <section className="TattoistDetails">
         <h2>TattoistDetails</h2>
         <h3>{fullName}</h3>
         <h4>{adress}</h4>
         <h4>{description}</h4>
-        <MapContainer coordinates={coordinate} />
+        <MapContainer
+          coordinates={this.state.coordinates}
+          fullName={this.state.fullName}
+        />
       </section>
     );
   }

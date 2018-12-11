@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./TattoistList.css";
 import { Switch, Route, Link } from "react-router-dom";
-
+import MainMapContainer from "../MainMapContainer.js";
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 function getTattoistUrl(oneTattoist) {
   return `/tattoistList/${oneTattoist._id}`;
 }
@@ -38,12 +39,12 @@ class TattoistList extends Component {
 
     return (
       <section className="TattoistList">
-        <h1>this is the Tattoist list</h1>
-        <ul>
-          {tattoistData.map(oneTattoist => {
-            return (
-              <div key={oneTattoist._id} className="Tattoist-box">
-                <ls>
+        {/* <h1>this is the Tattoist list</h1> */}
+        <div className="Tattoist">
+          <ul>
+            {tattoistData.map(oneTattoist => {
+              return (
+                <li key={oneTattoist._id} className="Tattoist-box">
                   <div className="tattoistImage">
                     <img src={oneTattoist.picture} alt={oneTattoist.fullName} />
                   </div>
@@ -51,14 +52,18 @@ class TattoistList extends Component {
                     <h1>{oneTattoist.fullName}</h1>
                   </Link>
                   <h3>{oneTattoist.adress}</h3>
+                  {/* <h4>{oneTattoist.geometry.coordinates[0]}</h4> */}
                   <button className="appointmentList">
                     Take An Appointment
                   </button>
-                </ls>
-              </div>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div onscroll="myScript" className="MapContainer">
+          <MainMapContainer />
+        </div>
       </section>
     );
   }
