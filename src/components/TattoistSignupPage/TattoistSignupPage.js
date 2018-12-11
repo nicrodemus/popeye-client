@@ -143,10 +143,14 @@ class TattoistSignupPage extends Component {
             </button>
           </form>
 
+            <p>
+              <NavLink to="/signup-page"> Sign Up</NavLink> as a Client
+            </p>
+
           <p>
-            Already Tattoist user?
-            <NavLink to="/tattoist-login-page"> Log In</NavLink>
+            <NavLink to="/tattoist-login-page"> Log In</NavLink> as Tattoist
           </p>
+
         </div>
       </section>
     );

@@ -22,12 +22,10 @@ import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 import TattoistDetails from "./components/TattoistDetails.js";
 import Dnd from "./components/CalendarPage/Calendar.js";
-import ClientView from "./components/CalendarPage/ClientCalendar"
+import ClientView from "./components/CalendarPage/ClientCalendar";
 import PlacesAutocomplete from "react-places-autocomplete";
 import SearchBar from "./components/SearchBar.js";
 import SearchResult from "./components/SearchResult.js";
-
-
 
 class App extends Component {
   constructor(props) {
@@ -83,46 +81,55 @@ class App extends Component {
     return (
       <section>
         <div className="App">
-          {(this.props.location.pathname !== "/login-page" && this.props.location.pathname !== "/tattoist-login-page") && (
-            <nav className="navbar-user-dropdown flex">
-
+          {this.props.location.pathname !== "/login-page" &&
+            this.props.location.pathname !== "/tattoist-login-page" && (
+              <nav className="navbar-user-dropdown flex">
                 <NavLink exact to="/">
                   <img src="/images/logo-header.svg" alt="logo" />
                 </NavLink>
 
-
-              {this.state.currentUser ? (
-                <span className="flex">
-                  <p className="padding-l-r-14">{this.state.currentUser.name}</p>
-                  <p className="padding-l-r-14">Appointments</p>
-                  <button className="extra-style"
-                  onClick={() => this.logoutClick()}>Log Out</button>
-                </span>
-              ) : (
-                
-                <span className="flex">
-                  <span className="flex ">
-                    <p>Are you:</p>
+                {this.state.currentUser ? (
+                  <span className="flex">
+                    <p className="padding-l-r-14">
+                      {this.state.currentUser.name}
+                    </p>
+                    <p className="padding-l-r-14">Appointments</p>
+                    <button
+                      className="extra-style"
+                      onClick={() => this.logoutClick()}
+                    >
+                      Log Out
+                    </button>
                   </span>
-                  {this.props.location.pathname !== "/tattoist-signup-page" && (
-                  <NavLink
-                    to="/tattoist-signup-page"
-                    className="white extra-style">
-                  Tattoist?
-                  </NavLink>
-                  
-                  )}
+                ) : (
+                  <span className="flex">
+                    <span className="flex ">
+                      {/* <p>Are you:</p> */}
+                    </span>
+                    {this.props.location.pathname !== "/tattoist-signup-page" &&
+                      this.props.location.pathname !== "/signup-page" && (
+                        <NavLink
+                          to="/tattoist-signup-page"
+                          className="white extra-style"
+                        >
+                          Tattoist?
+                        </NavLink>
+                      )}
 
-                  {this.props.location.pathname !== "/signup-page" && (
-                  <NavLink to="/signup-page" className="white extra-style">
-                  Client?
-                  </NavLink>
-                  )}
-
-                </span>
-              )}
-            </nav>
-          )}
+                    {this.props.location.pathname !== "/signup-page" &&
+                      this.props.location.pathname !==
+                        "/tattoist-signup-page" && (
+                        <NavLink
+                          to="/signup-page"
+                          className="white extra-style"
+                        >
+                          Client?
+                        </NavLink>
+                      )}
+                  </span>
+                )}
+              </nav>
+            )}
 
           {/* --------------------------------------------------- */}
           <Switch>
@@ -231,11 +238,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/clientcalendar" 
-              render={() => (
-                <ClientView
-                />
-              )} />
+            <Route path="/clientcalendar" render={() => <ClientView />} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
