@@ -54,17 +54,17 @@ class LocationSearchInput extends React.Component {
           }) => (
             <div className="searchElement">
               <form onSubmit={event => this.handleSubmit(event)}>
-                <button className="searchButton">
-                  <Link to="/tattoistlist"> Search your tatooist </Link>
-                </button>
                 <input
                   value={this.state.inputValue}
                   onChange={event => this.handleChange(event)}
                   {...getInputProps({
                     placeholder: "Search Places ...",
-                    className: "location-search-input"
+                    className: ""
                   })}
                 />
+                <button className="searchButton margin-top-20">
+                  <Link className="white" to="/tattoistlist"> Search your tatooist </Link>
+                </button>
               </form>
 
               <div className="autocomplete-dropdown-container">
