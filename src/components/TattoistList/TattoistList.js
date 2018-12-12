@@ -34,11 +34,9 @@ class TattoistList extends Component {
       });
   }
 
- 
-
   render() {
     console.log("THESE ARE MY PROPS", this.props);
-    console.log("this state appiointemet",this.state);
+    console.log("this state appiointemet", this.state);
     const { tattoistData } = this.state;
 
     return (
@@ -49,27 +47,35 @@ class TattoistList extends Component {
             {tattoistData.map(oneTattoist => {
               return (
                 <li key={oneTattoist._id} className="Tattoist-box">
-                  <div className="image-container">
-                    <img src={oneTattoist.picture} alt={oneTattoist.fullName} />
+                  <div className="name-image">
+                    <div className="image-container">
+                      <img
+                        className="img"
+                        src={oneTattoist.picture}
+                        alt={oneTattoist.fullName}
+                      />
+                    </div>
+                    <Link to={getTattoistUrl(oneTattoist)}>
+                      <h1>{oneTattoist.fullName}</h1>
+                    </Link>
                   </div>
-                  <Link to={getTattoistUrl(oneTattoist)}>
-                    <h1>{oneTattoist.fullName}</h1>
-                  </Link>
-                  <h3>{oneTattoist.adress}</h3>
+                  <div className="adressContainer">
+                    <h3>{oneTattoist.adress}</h3>
+                  </div>
                   {/* <h4>{oneTattoist.geometry.coordinates[0]}</h4> */}
                   <button className="appointmentList">
                     Take An Appointment
                   </button>
-                  <CustomView 
-                    tattoist={oneTattoist} 
-                    className="calendar-client" 
+                  <CustomView
+                    tattoist={oneTattoist}
+                    className="calendar-client"
                   />
                 </li>
               );
             })}
           </ul>
         </div>
-        <div  className="MapContainer">
+        <div className="MapContainer">
           <MainMapContainer tattoistData={this.state.tattoistData} />
         </div>
       </section>
