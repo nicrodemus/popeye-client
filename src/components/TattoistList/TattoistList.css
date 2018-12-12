@@ -14,11 +14,11 @@ li {
   width: 100px;
   height: 50px;
 }
-.tattoistImage {
+/* .tattoistImage {
   height: 50px;
   width: 50px;
   background-color: red;
-}
+} */
 .MapContainer {
   width: 100%;
   height: 100%;
@@ -30,7 +30,7 @@ li {
   left: 500px;
 }
 
-.calendar-client{
+.calendar-client {
   display: block;
 }
 
@@ -41,4 +41,12 @@ li {
   left: 170px;
 }
 
-
+.image-container {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+}
+img {
+  width: 200px;
+  height: 200px;
+}

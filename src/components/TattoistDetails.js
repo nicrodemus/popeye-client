@@ -13,13 +13,13 @@ class TattoistPersonalPage extends Component {
   }
 
   componentWillMount() {
-    console.log("blah WILL MOUNT", this.state)
+    console.log("blah WILL MOUNT", this.state);
   }
 
   componentDidMount() {
     const { params } = this.props.match;
 
-    console.log("blah DID MOUNT", this.state)
+    console.log("blah DID MOUNT", this.state);
 
     axios
       .get(`http://localhost:5555/api/tattoistList/${params.tattoistId}`, {
@@ -53,8 +53,6 @@ class TattoistPersonalPage extends Component {
       });
   }
   render() {
-
-
     const {
       //picture,
       fullName,
@@ -67,9 +65,19 @@ class TattoistPersonalPage extends Component {
     return (
       <section className="TattoistDetails">
         <h2>TattoistDetails</h2>
+
         <h3>{fullName}</h3>
         <h4>{adress}</h4>
         <h4>{description}</h4>
+        <img src={picture} alt={fullName} />
+
+        {portfolio.map(oneImage => {
+          return (
+            <div>
+              <img src={oneImage} alt={oneImage} />
+            </div>
+          );
+        })}
         <MapContainer
           coordinates={coordinates}
           fullName={this.state.fullName}
