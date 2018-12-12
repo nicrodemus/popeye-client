@@ -265,7 +265,7 @@ class App extends Component {
             />
 
             <Route path="/reset-password" component={ResetPassword} />
-            <Route path="/calendar" component={Dnd} />
+            <Route path="/calendar" render={()=><Dnd currentUser={this.state.currentUser}/>}   component={Dnd} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
@@ -315,7 +315,6 @@ class App extends Component {
                 />
               )}
             /> */}
-            <Route path="/clientcalendar" render={() => <ClientView />} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"

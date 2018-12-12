@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./TattoistList.css";
-import { Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MainMapContainer from "../MainMapContainer.js";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+//import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import CustomView from "../CalendarPage/ClientCalendar";
 
 function getTattoistUrl(oneTattoist) {
@@ -34,9 +34,11 @@ class TattoistList extends Component {
       });
   }
 
+ 
+
   render() {
     console.log("THESE ARE MY PROPS", this.props);
-    console.log(this.state);
+    console.log("this state appiointemet",this.state);
     const { tattoistData } = this.state;
 
     return (
@@ -47,7 +49,7 @@ class TattoistList extends Component {
             {tattoistData.map(oneTattoist => {
               return (
                 <li key={oneTattoist._id} className="Tattoist-box">
-                  <div className="tattoistImage">
+                  <div className="image-container">
                     <img src={oneTattoist.picture} alt={oneTattoist.fullName} />
                   </div>
                   <Link to={getTattoistUrl(oneTattoist)}>
@@ -58,14 +60,16 @@ class TattoistList extends Component {
                   <button className="appointmentList">
                     Take An Appointment
                   </button>
-
-                  <CustomView className="calendar-client" />
+                  <CustomView 
+                    tattoist={oneTattoist} 
+                    className="calendar-client" 
+                  />
                 </li>
               );
             })}
           </ul>
         </div>
-        <div className="MapContainer">
+        <div onscroll="myScript" className="MapContainer">
           <MainMapContainer tattoistData={this.state.tattoistData} />
         </div>
       </section>

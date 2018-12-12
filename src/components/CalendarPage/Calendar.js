@@ -3,6 +3,7 @@ import Calendar from "react-big-calendar";
 import moment from "moment";
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import Toolbar from 'react-big-calendar';
+import axios from 'axios'
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less'
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -26,23 +27,33 @@ class CalendarPage extends Component {
   
 
   handleSelect = ({ start, end }) => {
-    const title = window.prompt('Name your appointement')
-    if (title)
-      this.setState({
-        events: [
-          ...this.state.events,
-          {
-            start,
-            end,
-            title,
-          },
-        ],
+    const title = window.prompt('Name your appointement');
+    const tattoistId= this.props.currentUser._id;
+    const startDate = start;
+    const endDate = end;
+    if (title){
+      const slot = {startDate, endDate, title}
+      axios.post(`/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
+      .then(response => {
+        
+        this.setState({
+          events: [
+            ...this.state.events,
+            {
+              start: startDate,
+              end: endDate,
+              title,
+            },
+          ],
+        })
       })
+      .catch(err => console.log(err))
+    }
   };
 
   onSelectEvent(pEvent) {
-    const r = window.confirm("Would you like to remove this event?")
-    if(r === true){
+    const shouldBeRemoved = window.confirm("Would you like to remove this event?")
+    if(shouldBeRemoved){
       
       this.setState((prevState, props) => {
         const events = [...prevState.events]
@@ -55,7 +66,7 @@ class CalendarPage extends Component {
 
   
 
-  // moveEvent({ event, start, end, isAllDay: droppedOnAllDaySlot }) {
+  // moveEvent({ event, startDate, endDate, isAllDay: droppedOnAllDaySlot }) {
   //   const { events } = this.state
 
   //   const idx = events.indexOf(event)
@@ -67,7 +78,7 @@ class CalendarPage extends Component {
   //     allDay = false
   //   }
 
-  //   const updatedEvent = { ...event, start, end, allDay }
+  //   const updatedEvent = { ...event, startDate, endDate, allDay }
 
   //   const nextEvents = [...events]
   //   nextEvents.splice(idx, 1, updatedEvent)
@@ -76,15 +87,15 @@ class CalendarPage extends Component {
   //     events: nextEvents,
   //   })
 
-  //   alert(`${event.title} was dropped onto ${updatedEvent.start}`)
+  //   alert(`${event.title} was dropped onto ${updatedEvent.startDate}`)
   // }
 
-  // resizeEvent = ({ event, start, end }) => {
+  // resizeEvent = ({ event, startDate, endDate }) => {
   //   const { events } = this.state
 
   //   const nextEvents = events.map(existingEvent => {
   //     return existingEvent.id == event.id
-  //       ? { ...existingEvent, start, end }
+  //       ? { ...existingEvent, startDate, endDate }
   //       : existingEvent
   //   })
 
@@ -92,7 +103,7 @@ class CalendarPage extends Component {
   //     events: nextEvents,
   //   })
 
-  //   alert(`${event.title} was resized to ${start}-${end}`)
+  //   alert(`${event.title} was resized to ${startDate}-${end}`)
   // }
 
   // newEvent(event) {
@@ -102,8 +113,8 @@ class CalendarPage extends Component {
   //     id: newId,
   //     title: 'New Event',
   //     allDay: event.slots.length == 1,
-  //     start: event.start,
-  //     end: event.end,
+  //     startDate: event.startDate,
+  //     endDate: event.end,
   //   }
   //   this.setState({
   //     events: this.state.events.concat([hour]),

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MapContainer from "./MapContainer.js";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+//import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 class TattoistPersonalPage extends Component {
   constructor(props) {
     super(props);
@@ -56,12 +56,11 @@ class TattoistPersonalPage extends Component {
 
 
     const {
-      _id,
-      picture,
+      //picture,
       fullName,
       adress,
       description,
-      portfolio,
+      //portfolio,
       coordinates
     } = this.state;
 
@@ -72,7 +71,6 @@ class TattoistPersonalPage extends Component {
         <h4>{adress}</h4>
         <h4>{description}</h4>
         <MapContainer
-          
           coordinates={coordinates}
           fullName={this.state.fullName}
         />

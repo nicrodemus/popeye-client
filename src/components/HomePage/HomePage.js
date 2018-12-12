@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LocationSearchInput from "../SearchBar.js";
+//import LocationSearchInput from "../SearchBar.js";
 
 class HomePage extends Component {
   render() {
