@@ -73,10 +73,6 @@ class CustomView extends React.Component {
 
 
   // componentDidMount(){
-
-  //     this.setState({events:this.props.eventsDb})
-
-  //   //this.setState({events:[{ start: startDate, end: endDate}]})
   //   // const tattoistId = this.props.tattoist._id;
   //   // axios.get(`http://localhost:5555/api/appointments/${tattoistId}`)
   //   // .then(response => {

@@ -9,6 +9,10 @@ body {
   margin: 0;
 }
 
+h3 {
+  margin: 0;
+}
+
 /* .HomePage {
   background-image: url(`../public/images/BackGroundSubHeader.svg`);
   background-size: cover;
@@ -55,6 +59,10 @@ body {
 
 .white {
   color:white;
+} 
+
+.black {
+  color:black;
 } 
 
 /* ----------------------------------------- */

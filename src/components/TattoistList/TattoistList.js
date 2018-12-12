@@ -49,7 +49,7 @@ class TattoistList extends Component {
             {tattoistData.map(oneTattoist => {
               return (
                 <li key={oneTattoist._id} className="Tattoist-box">
-                  <div className="tattoistImage">
+                  <div className="image-container">
                     <img src={oneTattoist.picture} alt={oneTattoist.fullName} />
                   </div>
                   <Link to={getTattoistUrl(oneTattoist)}>
@@ -69,7 +69,7 @@ class TattoistList extends Component {
             })}
           </ul>
         </div>
-        <div className="MapContainer">
+        <div onscroll="myScript" className="MapContainer">
           <MainMapContainer tattoistData={this.state.tattoistData} />
         </div>
       </section>
