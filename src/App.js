@@ -138,7 +138,6 @@ class App extends Component {
                     this.syncSearchedLocation(locationSearchDoc)
                   }
                   currentuser={this.state.currentUser}
-                  component={LandingPage}
                 />
               )}
             />

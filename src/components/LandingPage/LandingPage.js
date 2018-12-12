@@ -7,13 +7,12 @@ class LandingPage extends Component {
     this.state = {
       address: "",
       adresseToCoordinates: "",
-      isSubmitSuccessful: false,
-      inputValue: ""
+      isSubmitSuccessful: false
     };
   }
 
-  handleEvent(event) {
-    this.setState({ inputValue: event });
+  handleEvent(coordinates) {
+    this.props.onUserInput(coordinates);
   }
 
   render() {
@@ -25,7 +24,7 @@ class LandingPage extends Component {
           <p>It's simple, quick and free</p>
           <div className="search">
             <LocationSearchInput
-              handleEvent={event => this.handleEvent(event)}
+              handleEvent={coordinates => this.handleEvent(coordinates)}
             />
           </div>
         </div>
