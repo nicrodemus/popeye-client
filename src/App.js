@@ -38,7 +38,7 @@ class App extends Component {
     };
   }
 
-  //
+  // ----------- checkuser------------------------------------
   componentDidMount() {
     axios
       .get("http://localhost:5555/api/checkuser", { withCredentials: true })
@@ -46,6 +46,21 @@ class App extends Component {
         console.log("Check User", response.data);
         const { userDoc } = response.data;
         this.syncCurrentUser(userDoc);
+
+        // ----------- checkTattoist------------------------------------
+        axios
+          .get("http://localhost:5555/api/checkTattoist", {
+            withCredentials: true
+          })
+          .then(response => {
+            console.log("Check Tattoist", response.data);
+            const { userDoc } = response.data;
+            this.syncCurrentUser(userDoc);
+          })
+          .catch(err => {
+            console.log("check user ERROR", err);
+            alert("Sorry! Something went wrong with check Tattoist");
+          });
       })
       .catch(err => {
         console.log("check user ERROR", err);
@@ -71,6 +86,19 @@ class App extends Component {
       .then(() => {
         //make "currentUser" empty again (like it was at the start)
         this.syncCurrentUser(null);
+
+        //--------------tattoist logout-------------------------------------
+        axios
+          .delete("http://localhost:5555/api/tattoist-logout", {
+            withCredentials: true
+          })
+          .then(() => {
+            this.syncCurrentUser(null);
+          })
+          .catch(err => {
+            console.log("Logout ERROR", err);
+            alert("Sorry! Something went wrong. Logout");
+          });
       })
       .catch(err => {
         console.log("Logout ERROR", err);
@@ -237,7 +265,7 @@ class App extends Component {
             />
 
             <Route path="/reset-password" component={ResetPassword} />
-            <Route path="/calendar" component={Dnd} />
+            <Route path="/calendar" render={()=><Dnd currentUser={this.state.currentUser}/>}   component={Dnd} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
@@ -287,7 +315,6 @@ class App extends Component {
                 />
               )}
             /> */}
-            <Route path="/clientcalendar" render={() => <ClientView />} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"

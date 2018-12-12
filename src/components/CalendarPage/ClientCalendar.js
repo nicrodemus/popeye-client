@@ -1,9 +1,10 @@
 import React from 'react'
 import dates from 'date-arithmetic'
-import events from './events'
+//import events from './events'
 import BigCalendar from 'react-big-calendar'
 import TimeGrid from 'react-big-calendar/lib/TimeGrid'
 import moment from "moment"
+import axios from "axios"
 
 
 
@@ -36,6 +37,7 @@ MyWeek.range = date => {
 }
 
 MyWeek.navigate = (date, action) => {
+
   switch (action) {
     case BigCalendar.Navigate.PREVIOUS:
       return dates.add(date, -3, 'day')
@@ -69,26 +71,52 @@ class CustomView extends React.Component {
      }
   }
 
+
+  // componentDidMount(){
+  //   // const tattoistId = this.props.tattoist._id;
+  //   // axios.get(`http://localhost:5555/api/appointments/${tattoistId}`)
+  //   // .then(response => {
+  //   //   console.log(response.data)
+  //   //   const appointmentsList = response.data.appointmentsArray.map( oneAppointment => {
+  //   //     oneAppointment.start = oneAppointment.startDate;
+  //   //     oneAppointment.end = oneAppointment.endDate;
+  //   //     return oneAppointment 
+  //   //   })
+  //   //   this.setState({events: appointmentsList})
+  //   // })
+  //   // .catch(err => console.log(err))
+  // }
+  
   handleSelect = ({ start, end }) => {
-    const title = window.prompt('Name your appointement')
-    if (title)
-      this.setState({
-        events: [
-          ...this.state.events,
-          {
-            start,
-            end,
-            title,
-          },
-        ],
+    const title = window.prompt('Name your appointement');
+    const tattoistId = this.props.tattoist._id;
+    const startDate = start;
+    const endDate = end;
+    if (title){
+      const slot = {startDate, endDate, title}
+      axios.post(`http://localhost:5555/api/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
+      .then(response => {
+        
+        this.setState({
+          events: [
+            ...this.state.events,
+            {
+              start: startDate,
+              end: endDate,
+              title,
+            },
+          ],
+        })
       })
+      .catch(err => console.log(err))
+    }
   };
 
 
   onSelectEvent(pEvent) {
-    const r = window.confirm("Would you like to remove this event?")
-    if(r === true){
-      
+    console.log("This props.eventsdb", this.props.eventsDb)
+    const mustBeRemoved = window.confirm("Would you like to remove this event?")
+    if(mustBeRemoved){
       this.setState((prevState, props) => {
         const events = [...prevState.events]
         const idx = events.indexOf(pEvent)
@@ -100,7 +128,9 @@ class CustomView extends React.Component {
 
 
 
-  render() { 
+  render() {
+    //console.log("STATE CLIENT CALENDAR",this.state)
+
     const localizer = BigCalendar.momentLocalizer(moment);// or globalizeLocalizer
     return ( 
       <BigCalendar
