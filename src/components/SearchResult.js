@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
+// import { Switch, Route, NavLink } from "react-router-dom";
 class SearchResult extends Component {
   render() {
     return (
