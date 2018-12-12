@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect, NavLink } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
 import "./LoginPage.css";
 
 class LoginPage extends Component {
@@ -16,6 +17,31 @@ class LoginPage extends Component {
   genericSync(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  }
+
+  loginWithGoogle(res, type) {
+    //axios request
+
+    const googleInfo = {
+      email: res.profileObj.email,
+      name: res.profileObj.givenName,
+      surname: res.profileObj.familyName
+    };
+
+    axios
+    .post("http://localhost:5555/api/google/google-login", googleInfo, {
+      withCredentials: true
+    })
+    .then(response => {
+      console.log("Login Page", response.data);
+      const { userDoc } = response.data;
+      // send "userDoc" to the App.js function that changes "currentUser"
+      this.props.onUserChange(userDoc);
+    })
+    .catch(err => {
+      console.log("Login Page Error", err);
+      alert("Sorry! Something went wrong. Google client login");
+    });
   }
 
   handleSubmit(event) {
@@ -38,6 +64,16 @@ class LoginPage extends Component {
   }
 
   render() {
+
+    const errorGoogle = response => {
+      console.log("fail google console", response);
+      this.loginWithGoogle(response, " fail google");
+    };
+
+    const responseGoogle = response => {
+      console.log("google console", response);
+      this.loginWithGoogle(response, "google");
+    };
     // check currentUser (received from App.js)
     if (this.props.currentUser) {
       return <Redirect to="/" />;
@@ -76,6 +112,14 @@ class LoginPage extends Component {
               <button className=" margin-top-20">
                 <p>Log In</p>
               </button>
+            <GoogleLogin
+              className="margin-top-20"
+              clientId="269725925185-fum6n1delt2mdkhn2hgj2h2q99eck1rm.apps.googleusercontent.com"
+              buttonText="Login with Google"
+              redirectUri=""
+              onSuccess={responseGoogle}
+              onFailure={errorGoogle}
+            />
             </form>
 
             <p>

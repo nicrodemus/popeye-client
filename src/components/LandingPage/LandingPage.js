@@ -19,11 +19,11 @@ class LandingPage extends Component {
     console.log(this.state);
     return (
       <section>
-        <div className="top flex">
-          <h3 className="white">
+        <div className="top">
+          <h2 className="white txt-align-center">
             Take an Appointment with your favourite Tattoist!
-          </h3>
-          <p className="white">It's simple, quick and free</p>
+          </h2>
+          <p className="white txt-align-center">It's simple, quick and free</p>
           <div className="search">
             <LocationSearchInput
               handleEvent={coordinates => this.handleEvent(coordinates)}
@@ -90,6 +90,10 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
+
+        <footer>
+          <p>text</p>
+        </footer>
       </section>
     );
   }
