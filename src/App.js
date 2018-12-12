@@ -117,7 +117,7 @@ class App extends Component {
 
                           <NavLink
                             className="white extra-style"
-                            to="/signup-page"
+                            to="/tattoist-signup-page"
                           >
                             For Tattoist
                           </NavLink>

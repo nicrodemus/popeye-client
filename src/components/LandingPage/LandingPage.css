@@ -24,3 +24,24 @@
 .searchButton {
   max-height: 35px;
 }
+
+.w-h-100px {
+  width: 100px;
+  height: 100px;
+}
+
+.block {
+  display:block;
+}
+
+.txt-align-center {
+  text-align:center;
+}
+
+.pad-top-50px {
+padding-top: 50px;
+}
+
+.pad-bttm-50px {
+  padding-bottom: 50px;
+}
