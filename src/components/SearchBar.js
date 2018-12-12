@@ -13,7 +13,8 @@ class LocationSearchInput extends React.Component {
     this.state = {
       address: "",
       adresseToCoordinates: "",
-      isSubmitSuccessful: false
+      isSubmitSuccessful: false,
+      inputValue: ""
     };
   }
 
@@ -22,21 +23,25 @@ class LocationSearchInput extends React.Component {
   };
 
   handleSelect = address => {
+    this.setState({ address });
+
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         this.setState({ adresseToCoordinates: latLng });
-        this.props.onUserInput(this.state.adresseToCoordinates);
+        this.props.handleEvent(latLng);
       })
       .catch(error => console.error("Error", error));
   };
 
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
   render() {
+    console.log(this.state);
     return (
       <div className="search-bar">
-        <button>
-          <Link to="/tattoistlist"> Search your tatooist </Link>
-        </button>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
@@ -48,13 +53,21 @@ class LocationSearchInput extends React.Component {
             getSuggestionItemProps,
             loading
           }) => (
-            <div>
-              <input
-                {...getInputProps({
-                  placeholder: "Search Places ...",
-                  className: "location-search-input"
-                })}
-              />
+            <div className="searchElement">
+              <form onSubmit={event => this.handleSubmit(event)}>
+                <button className="searchButton">
+                  <Link to="/tattoistlist"> Search your tatooist </Link>
+                </button>
+                <input
+                  value={this.state.inputValue}
+                  onChange={event => this.handleChange(event)}
+                  {...getInputProps({
+                    placeholder: "Search Places ...",
+                    className: "location-search-input"
+                  })}
+                />
+              </form>
+
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {

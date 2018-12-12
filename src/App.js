@@ -105,7 +105,6 @@ class App extends Component {
                 ) : (
                   <span className="flex">
                     <span className="flex ">{/* <p>Are you:</p> */}</span>
-
                     {this.props.location.pathname !== "/tattoist-signup-page" &&
                       this.props.location.pathname !== "/signup-page" && (
                         <div className="flex">
@@ -157,7 +156,18 @@ class App extends Component {
           {/* --------------------------------------------------- */}
           <Switch>
             {/* Route is important: allow you to define the URL in "path"*/}
-            <Route exact path="/" component={LandingPage} />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <LandingPage
+                  onUserInput={locationSearchDoc =>
+                    this.syncSearchedLocation(locationSearchDoc)
+                  }
+                  currentuser={this.state.currentUser}
+                />
+              )}
+            />
 
             <Route path="/mapContainer" component={MapContainer} />
             <Route
@@ -227,18 +237,6 @@ class App extends Component {
             />
 
             <Route path="/reset-password" component={ResetPassword} />
-            <Route
-              path="/search"
-              render={() => (
-                <SearchBar
-                  onUserInput={locationSearchDoc =>
-                    this.syncSearchedLocation(locationSearchDoc)
-                  }
-                  currentuser={this.state.currentUser}
-                  component={SearchBar}
-                />
-              )}
-            />
             <Route path="/calendar" component={Dnd} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
@@ -251,8 +249,36 @@ class App extends Component {
               )}
             />
 
-            <Route path="/search-result" component={SearchResult} />
             <Route
+              exact
+              path="/"
+              render={() => (
+                <LandingPage
+                  onUserInput={locationSearchDoc =>
+                    this.syncSearchedLocation(locationSearchDoc)
+                  }
+                  currentuser={this.state.currentUser}
+                  component={LandingPage}
+                />
+              )}
+            />
+
+            <Route
+              path="/search"
+              render={() => (
+                <SearchBar
+                  onUserInput={locationSearchDoc =>
+                    this.syncSearchedLocation(locationSearchDoc)
+                  }
+                  currentuser={this.state.currentUser}
+                  component={SearchBar}
+                />
+              )}
+            />
+
+            <Route path="/search-result" component={SearchResult} />
+
+            {/* <Route
               path="/search"
               render={() => (
                 <SearchBar
@@ -260,7 +286,7 @@ class App extends Component {
                   searchQuery={placeDoc => this.syncSearchQuery(placeDoc)}
                 />
               )}
-            />
+            /> */}
             <Route path="/clientcalendar" render={() => <ClientView />} />
             {/* Use "render" instead of "component" to pass props */}
             <Route
