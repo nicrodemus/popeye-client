@@ -11,8 +11,10 @@ li {
   list-style-type: none;
 }
 .appointmentList {
-  width: 100px;
+  width: 200px;
   height: 50px;
+  border-radius: 50px;
+  font-weight: bold;
 }
 /* .tattoistImage {
   height: 50px;
@@ -43,10 +45,27 @@ li {
 
 .image-container {
   display: flex;
-  justify-content: center;
-  border: 1px solid black;
+  justify-content: flex-start;
+
+  /* border: 1px solid black; */
 }
-img {
+.img {
   width: 200px;
   height: 200px;
+  border-radius: 100px;
+}
+.name-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.adressContainer {
+  padding-right: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
