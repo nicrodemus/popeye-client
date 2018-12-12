@@ -104,8 +104,8 @@ class CustomView extends React.Component {
     const localizer = BigCalendar.momentLocalizer(moment);// or globalizeLocalizer
     return ( 
       <BigCalendar
-      min={new Date(2017, 10, 0, 9, 0, 0)}
-      max={new Date(2017, 10, 0, 18, 0, 0)} 
+      min={new Date(2017, 10, 0, 8, 0, 0)}
+      max={new Date(2017, 10, 0, 23, 0, 0)} 
       selectable
       localizer={localizer}
       defaultDate={new Date()}

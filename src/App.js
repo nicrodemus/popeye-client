@@ -103,24 +103,27 @@ class App extends Component {
                   </span>
                 ) : (
                   <span className="flex">
-                    <span className="flex ">
-                      <p>Are you:</p>
-                    </span>
-                    {this.props.location.pathname !==
-                      "/tattoist-signup-page" && (
-                      <NavLink
-                        to="/tattoist-signup-page"
-                        className="white extra-style"
-                      >
-                        Tattoist?
-                      </NavLink>
-                    )}
+                    <span className="flex ">{/* <p>Are you:</p> */}</span>
+                    {this.props.location.pathname !== "/tattoist-signup-page" &&
+                      this.props.location.pathname !== "/signup-page" && (
+                        <NavLink
+                          to="/tattoist-signup-page"
+                          className="white extra-style"
+                        >
+                          Tattoist?
+                        </NavLink>
+                      )}
 
-                    {this.props.location.pathname !== "/signup-page" && (
-                      <NavLink to="/signup-page" className="white extra-style">
-                        Client?
-                      </NavLink>
-                    )}
+                    {this.props.location.pathname !== "/signup-page" &&
+                      this.props.location.pathname !==
+                        "/tattoist-signup-page" && (
+                        <NavLink
+                          to="/signup-page"
+                          className="white extra-style"
+                        >
+                          Client?
+                        </NavLink>
+                      )}
                   </span>
                 )}
               </nav>

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./SignupPage.css";
 import { Redirect, NavLink } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
+import { PostData } from "../../PostData.js";
 
 class SignupPage extends Component {
   constructor(props) {
@@ -14,7 +16,8 @@ class SignupPage extends Component {
       originalPassword: "",
       confirmPassword: "",
       phoneNumber: "",
-      currentUser: null
+      currentUser: null,
+      redirect: false
     };
   }
 
@@ -23,19 +26,18 @@ class SignupPage extends Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit(event) {
-    const { originalPassword, confirmPassword } = this.state;
-    
-    event.preventDefault();
 
-    if (originalPassword !== confirmPassword) {
+  signupWithGoogle(res, type) {
+    //axios request
 
-      alert("Passwords don't match.")
-    } else {
-      // make API call
- 
+    const googleInfo = {
+      email: res.profileObj.email,
+      name: res.profileObj.givenName,
+      surname: res.profileObj.familyName,
+    };
+
     axios
-      .post("http://localhost:5555/api/signup", this.state, {
+      .post("http://localhost:5555/api/google/google-signup", googleInfo, {
         withCredentials: true
       })
       .then(response => {
@@ -46,15 +48,51 @@ class SignupPage extends Component {
       })
       .catch(err => {
         console.log("Signup Page Error", err);
-        alert("Sorry! Something went wrong. Signup");
+        alert("Sorry! Something went wrong. Google client signup");
       });
+  }
+
+  handleSubmit(event) {
+    const { originalPassword, confirmPassword } = this.state;
+
+    event.preventDefault();
+
+    if (originalPassword !== confirmPassword) {
+      alert("Passwords don't match.");
+    } else {
+      // make API call
+
+      axios
+        .post("http://localhost:5555/api/signup", this.state, {
+          withCredentials: true
+        })
+        .then(response => {
+          console.log("Signup Page", response.data);
+          const { userDoc } = response.data;
+          // send "userDoc" to the App.js function that changes "currentUser"
+          this.props.onUserChange(userDoc);
+        })
+        .catch(err => {
+          console.log("Signup Page Error", err);
+          alert("Sorry! Something went wrong. Signup");
+        });
     }
   }
 
-
   render() {
+
+    const errorGoogle = response => {
+      console.log("fail google console", response);
+      this.signupWithGoogle(response, " fail google");
+    };
+
+    const responseGoogle = response => {
+      console.log("google console", response);
+      this.signupWithGoogle(response, "google");
+    };
+
     if (this.props.currentUser) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
       //   <section className="SignupPage">
       //     <h2>You are signed up!</h2>
       //     <p>Welcome, {this.props.currentUser.name}!</p>
@@ -65,13 +103,12 @@ class SignupPage extends Component {
     return (
       <section className="SignupPage">
         <div className="signup-div">
-        <h2>Create an Account</h2>
-        
+          <h2>Create an Account</h2>
+
           <form
             className="signup-form pad-40"
             onSubmit={event => this.handleSubmit(event)}
           >
-
             <label>
               <input
                 className=""
@@ -107,7 +144,7 @@ class SignupPage extends Component {
 
             <label>
               <input
-               className="margin-top-20"
+                className="margin-top-20"
                 value={this.state.email}
                 onChange={event => this.genericSync(event)}
                 type="email"
@@ -143,9 +180,20 @@ class SignupPage extends Component {
             </button>
           </form>
 
+          <GoogleLogin
+            clientId="269725925185-fum6n1delt2mdkhn2hgj2h2q99eck1rm.apps.googleusercontent.com"
+            buttonText="Signup"
+            redirectUri=""
+            onSuccess={responseGoogle}
+            onFailure={errorGoogle}
+          />
+
           <p>
-            Already a client?
-            <NavLink to="/login-page"> Log In</NavLink>
+            <NavLink to="/tattoist-signup-page"> Sign Up</NavLink> as Tattoist
+          </p>
+
+          <p>
+            <NavLink to="/login-page"> Log In</NavLink> as a Client
           </p>
         </div>
       </section>
