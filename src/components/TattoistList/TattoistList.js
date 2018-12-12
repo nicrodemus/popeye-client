@@ -69,7 +69,7 @@ class TattoistList extends Component {
             })}
           </ul>
         </div>
-        <div onscroll="myScript" className="MapContainer">
+        <div  className="MapContainer">
           <MainMapContainer tattoistData={this.state.tattoistData} />
         </div>
       </section>
