@@ -47,7 +47,7 @@ class TattoistList extends Component {
             {tattoistData.map(oneTattoist => {
               return (
                 <li key={oneTattoist._id} className="Tattoist-box">
-                  <div className="tattoistImage">
+                  <div className="image-container">
                     <img src={oneTattoist.picture} alt={oneTattoist.fullName} />
                   </div>
                   <Link to={getTattoistUrl(oneTattoist)}>
@@ -58,14 +58,16 @@ class TattoistList extends Component {
                   <button className="appointmentList">
                     Take An Appointment
                   </button>
-
-                  <CustomView className="calendar-client" />
+                  <CustomView
+                    eventsDb={oneTattoist.appointement}
+                    className="calendar-client"
+                  />
                 </li>
               );
             })}
           </ul>
         </div>
-        <div className="MapContainer">
+        <div onscroll="myScript" className="MapContainer">
           <MainMapContainer tattoistData={this.state.tattoistData} />
         </div>
       </section>
