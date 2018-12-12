@@ -26,14 +26,13 @@ class SignupPage extends Component {
     this.setState({ [name]: value });
   }
 
-
   signupWithGoogle(res, type) {
     //axios request
 
     const googleInfo = {
       email: res.profileObj.email,
       name: res.profileObj.givenName,
-      surname: res.profileObj.familyName,
+      surname: res.profileObj.familyName
     };
 
     axios
@@ -80,7 +79,6 @@ class SignupPage extends Component {
   }
 
   render() {
-
     const errorGoogle = response => {
       console.log("fail google console", response);
       this.signupWithGoogle(response, " fail google");
@@ -178,23 +176,19 @@ class SignupPage extends Component {
             <button className="margin-top-20">
               <p>Sign Up</p>
             </button>
+            <GoogleLogin
+              className="margin-top-20"
+              clientId="269725925185-fum6n1delt2mdkhn2hgj2h2q99eck1rm.apps.googleusercontent.com"
+              buttonText="Signup with Google"
+              redirectUri=""
+              onSuccess={responseGoogle}
+              onFailure={errorGoogle}
+            />
           </form>
 
-          <GoogleLogin
-            clientId="269725925185-fum6n1delt2mdkhn2hgj2h2q99eck1rm.apps.googleusercontent.com"
-            buttonText="Signup"
-            redirectUri=""
-            onSuccess={responseGoogle}
-            onFailure={errorGoogle}
-          />
-
-          <p>
-            <NavLink to="/tattoist-signup-page"> Sign Up</NavLink> as Tattoist
-          </p>
-
-          <p>
-            <NavLink to="/login-page"> Log In</NavLink> as a Client
-          </p>
+            <p>
+              <NavLink to="/tattoist-signup-page"> Sign Up</NavLink> as Tattoist
+            </p>
         </div>
       </section>
     );

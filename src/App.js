@@ -7,6 +7,7 @@ import "./App.css";
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage/HomePage.js";
+import LandingPage from "./components/LandingPage/LandingPage.js";
 import TattoistList from "./components/TattoistList/TattoistList.js";
 // -------------------------------------------
 import SignupPage from "./components/SignupPage/SignupPage.js";
@@ -17,13 +18,13 @@ import ResetPassword from "./components/ResetPassword/ResetPassword.js";
 import TattoistSignupPage from "./components/TattoistSignupPage/TattoistSignupPage.js";
 import TattoistLoginPage from "./components/TattoistLoginPage/TattoistLoginPage.js";
 // -------------------------------------------
-import LandingPage from "./components/LandingPage/LandingPage.js";
 import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
 import TattoistDetails from "./components/TattoistDetails.js";
 import Dnd from "./components/CalendarPage/Calendar.js";
 import ClientView from "./components/CalendarPage/ClientCalendar";
 import PlacesAutocomplete from "react-places-autocomplete";
+// -------------------------------------------
 import SearchBar from "./components/SearchBar.js";
 import SearchResult from "./components/SearchResult.js";
 
@@ -103,34 +104,56 @@ class App extends Component {
                   </span>
                 ) : (
                   <span className="flex">
-                    <span className="flex ">
-                      {/* <p>Are you:</p> */}
-                    </span>
+                    <span className="flex ">{/* <p>Are you:</p> */}</span>
+
                     {this.props.location.pathname !== "/tattoist-signup-page" &&
                       this.props.location.pathname !== "/signup-page" && (
-                        <NavLink
-                          to="/tattoist-signup-page"
-                          className="white extra-style"
-                        >
-                          Tattoist?
-                        </NavLink>
+                        <div className="flex">
+                          <NavLink
+                            className="white extra-style"
+                            to="/signup-page"
+                          >
+                            For Clients
+                          </NavLink>
+
+                          <NavLink
+                            className="white extra-style"
+                            to="/signup-page"
+                          >
+                            For Tattoist
+                          </NavLink>
+                        </div>
+                      )}
+
+                    {this.props.location.pathname !== "/tattoist-signup-page" &&
+                      this.props.location.pathname !== "/" && (
+                        <p className="white extra-style">
+                          <NavLink
+                            className="white extra-style"
+                            to="/login-page"
+                          >
+                            Log In
+                          </NavLink>
+                          as a Client
+                        </p>
                       )}
 
                     {this.props.location.pathname !== "/signup-page" &&
-                      this.props.location.pathname !==
-                        "/tattoist-signup-page" && (
-                        <NavLink
-                          to="/signup-page"
-                          className="white extra-style"
-                        >
-                          Client?
-                        </NavLink>
+                      this.props.location.pathname !== "/" && (
+                        <p className="white extra-style">
+                          <NavLink
+                            className="white extra-style"
+                            to="/tattoist-login-page"
+                          >
+                            Log In
+                          </NavLink>{" "}
+                          as Tattoist
+                        </p>
                       )}
                   </span>
                 )}
               </nav>
             )}
-
           {/* --------------------------------------------------- */}
           <Switch>
             {/* Route is important: allow you to define the URL in "path"*/}
