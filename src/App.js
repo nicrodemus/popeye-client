@@ -219,15 +219,11 @@ class App extends Component {
                 )
               }
             />
-<<<<<<< HEAD
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/tattoistList/:tattoistId"
               component={TattoistPersonalPage}
             />
-=======
-
->>>>>>> 809d0083d6db7044742d38dfdddb98a418ab2dc7
             <Route
               path="/tattoistlist"
               render={() =>
