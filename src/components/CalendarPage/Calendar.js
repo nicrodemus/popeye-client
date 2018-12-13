@@ -16,11 +16,6 @@ const DragAndDropCalendar = withDragAndDrop(Calendar);
 class CalendarPage extends Component {
   state = {
     events: [
-      {
-        start: new Date(),
-        end: new Date(moment().add(1, "days")),
-        title: "Event example"
-      }
     ]
   };
   
@@ -33,9 +28,9 @@ class CalendarPage extends Component {
     const endDate = end;
     if (title){
       const slot = {startDate, endDate, title}
-      axios.post(`/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
+      axios.post(`${process.env.REACT_APP_API_URL}/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
       .then(response => {
-        
+        console.log("pls THEN", response)
         this.setState({
           events: [
             ...this.state.events,
