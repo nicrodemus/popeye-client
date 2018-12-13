@@ -29,9 +29,12 @@ class LandingPage extends Component {
             <LocationSearchInput
               handleEvent={coordinates => this.handleEvent(coordinates)}
             />
-             <button className="searchButton margin-top-20">
-                  <Link className="white" to="/tattoistlist"> Search your tatooist </Link>
-                </button>
+            <button className="searchButton margin-top-20">
+              <Link className="white" to="/tattoistlist">
+                {" "}
+                Search your tatooist{" "}
+              </Link>
+            </button>
           </div>
         </div>
 

@@ -61,7 +61,6 @@ class TattoistPersonalPage extends Component {
       coordinates
     } = this.state;
 
-    
     return (
       <section className="TattoistDetails">
         <h2>TattoistDetails</h2>
