@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
-=======
-import {Link} from "react-router-dom";
->>>>>>> 6ee8574aa3ecbb97d5eb65a19ca3d1d486b82d94
 import "./LandingPage.css";
 import LocationSearchInput from "../SearchBar.js";
 class LandingPage extends Component {
@@ -30,25 +26,15 @@ class LandingPage extends Component {
           </h2>
           <p className="white txt-align-center">It's simple, quick and free</p>
           <div className="search flex">
-<<<<<<< HEAD
-            <form>
-              <LocationSearchInput
-                handleEvent={coordinates => this.handleEvent(coordinates)}
-              />
-              <button className="searchButton margin-top-20">
-                <Link className="white" to="/tattoistlist">
-                  Search your tatooist
-                </Link>
-              </button>
-            </form>
-=======
             <LocationSearchInput
               handleEvent={coordinates => this.handleEvent(coordinates)}
             />
-             <button className="searchButton margin-top-20">
-                  <Link className="white" to="/tattoistlist"> Search your tatooist </Link>
-                </button>
->>>>>>> 6ee8574aa3ecbb97d5eb65a19ca3d1d486b82d94
+            <button className="searchButton margin-top-20">
+              <Link className="white" to="/tattoistlist">
+                {" "}
+                Search your tatooist{" "}
+              </Link>
+            </button>
           </div>
         </div>
 
