@@ -8,7 +8,7 @@ import MainMapContainer from "../MainMapContainer.js";
 import CustomView from "../CalendarPage/ClientCalendar";
 
 function getTattoistUrl(oneTattoist) {
-  return `/tattoistlist/${oneTattoist._id}`;
+  return `/tattoistList/${oneTattoist._id}`;
 }
 
 class TattoistList extends Component {

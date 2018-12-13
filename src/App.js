@@ -9,7 +9,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage/HomePage.js";
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import TattoistList from "./components/TattoistList/TattoistList.js";
-import TattoistDetails from "./components/TattoistDetails/TattoistDetails.js";
+import TattoistPersonalPage from "./components/TattoistDetails/TattoistDetails.js";
 // -------------------------------------------
 import SignupPage from "./components/SignupPage/SignupPage.js";
 import LoginPage from "./components/LoginPage/LoginPage.js";
@@ -39,12 +39,12 @@ class App extends Component {
     };
   }
 
-  
-
   // ----------- checkuser------------------------------------
   componentDidMount() {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/checkuser`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/checkuser`, {
+        withCredentials: true
+      })
       .then(response => {
         console.log("Check User", response.data);
         const { userDoc } = response.data;
@@ -85,7 +85,9 @@ class App extends Component {
 
   logoutClick() {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true })
+      .delete(`${process.env.REACT_APP_API_URL}/logout`, {
+        withCredentials: true
+      })
       .then(() => {
         //make "currentUser" empty again (like it was at the start)
         this.syncCurrentUser(null);
@@ -214,7 +216,10 @@ class App extends Component {
               }
             />
             {/* Use "render" instead of "component" to pass props */}
-
+            <Route
+              path="/tattoistList/:tattoistId"
+              component={TattoistPersonalPage}
+            />
             <Route
               path="/tattoistlist"
               render={() =>
