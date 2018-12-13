@@ -6,15 +6,18 @@
 }
 
 li {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 8px;
   list-style-type: none;
+  box-shadow: 1px 1.5px 1.5px 0.5px black;
+  margin-top: 20px;
+  padding: 2px 2px 2px 2px
 }
 .appointmentList {
   width: 200px;
   height: 50px;
   border-radius: 50px;
-  font-weight: bold;
+  font-weight: bolder;
 }
 /* .tattoistImage {
   height: 50px;
@@ -30,6 +33,7 @@ li {
   position: fixed;
   top: 50px;
   left: 500px;
+  border-radius: 8px;
 }
 
 .calendar-client {
