@@ -12,6 +12,7 @@
   align-items: center;
   border-radius: 10px;
   max-width: 500px;
+  background-color: white;
 }
 
 .signup-form {
@@ -20,6 +21,7 @@
   justify-content: space-around;
   align-items: center;
   padding-right: 50px;
+  max-width: 300px;
 }
 
 .button-container {
@@ -31,6 +33,9 @@
   padding: 40px;
 }
 
-.margin-top-20 {
-  margin-top: 20px;
+.z-indexplus1 {
+  z-index: +1;
+}
+.max-width {
+  max-height: 20px;
 }

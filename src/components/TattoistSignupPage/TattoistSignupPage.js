@@ -17,7 +17,7 @@ class TattoistSignupPage extends Component {
       phoneNumber: "",
       adress: "",
       coordinates: [],
-      currentUser: null,
+      currentUser: null
     };
   }
 
@@ -28,7 +28,7 @@ class TattoistSignupPage extends Component {
 
   syncCoordinates(latLng) {
     const { lat, lng } = latLng;
-    this.setState({ coordinates: [lng, lat] })
+    this.setState({ coordinates: [lng, lat] });
   }
 
   handleSubmit(event) {
@@ -144,12 +144,12 @@ class TattoistSignupPage extends Component {
             </label>
             <label>
               <LocationSearchInput
-                className="margin-top-20"
+                className="margin-top-20 z-indexplus1 max-width"
                 handleEvent={latLng => this.syncCoordinates(latLng)}
               />
             </label>
 
-            <button className="margin-top-20">
+            <button className="z-index-1 margin-top-20">
               <p>Sign Up</p>
             </button>
           </form>
