@@ -69,15 +69,6 @@ footer {
   color: black;
 }
 
-.search-bar {
-  width: 100%;
-}
-
-.extra-style {
-  padding: 14px 16px;
-}
-/* -----------single css command ----------- */
-
 label {
   display: flex;
   flex-direction: column;
@@ -101,6 +92,10 @@ button {
   border-radius: 5px;
   background-color: #000000;
   color: white;
+}
+
+.extra-style {
+  padding: 14px 16px;
 }
 
 .padding-l-r-14 {

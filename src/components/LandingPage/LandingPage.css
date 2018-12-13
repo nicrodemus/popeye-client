@@ -28,21 +28,18 @@
 }
 
 .block {
-  display:block;
+  display: block;
 }
 
 .txt-align-center {
   text-align:center;
+  margin:0;
 }
 
 .pad-top-50px {
-padding-top: 50px;
+  padding-top: 50px;
 }
 
 .pad-bttm-50px {
   padding-bottom: 50px;
-}
-
-.b-black {
-  background-color: black;
 }

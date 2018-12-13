@@ -1,0 +1,38 @@
+.images-container {
+  display: flex;
+  flex-direction: row;
+
+  height: 300px;
+  padding-top: 200px;
+  justify-content: flex-start;
+}
+.image {
+  height: 200px;
+  width: 200px;
+}
+.adress-container {
+  /* display: flex;
+  flex-direction: column; */
+}
+.TattoistDetailsTop {
+  flex-direction: row;
+
+  align-items: flex-start;
+}
+.TattoistDetails {
+  /* max-width: 10px; */
+  /* display: flex;
+  flex-direction: row; */
+}
+.MapConteiner {
+  width: 1340px;
+  height: 100%;
+  position: fixed;
+  top: 120px;
+  left: 800px;
+}
+.adress {
+  position: absolute;
+  top: 570px;
+  left: 700px;
+}

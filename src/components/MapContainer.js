@@ -31,8 +31,7 @@ export class MapContainer extends Component {
     const lat = coordinates[1];
     return (
       <Map
-
-        options={{scrollwheel: false}}
+        options={{ scrollwheel: false }}
         google={this.props.google}
         style={{ width: "40%", height: "60%", position: "relative" }}
         initialCenter={{

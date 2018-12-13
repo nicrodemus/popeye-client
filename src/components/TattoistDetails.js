@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MapContainer from "./MapContainer.js";
+import "./TattoistDetails.css";
 //import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 class TattoistPersonalPage extends Component {
   constructor(props) {
@@ -62,26 +63,37 @@ class TattoistPersonalPage extends Component {
       coordinates
     } = this.state;
 
+    console.log(portfolio);
     return (
       <section className="TattoistDetails">
         <h2>TattoistDetails</h2>
-
-        <h3>{fullName}</h3>
-        <h4>{adress}</h4>
-        <h4>{description}</h4>
-        <img src={picture} alt={fullName} />
-
-        {portfolio.map(oneImage => {
-          return (
-            <div>
-              <img src={oneImage} alt={oneImage} />
+        <div className="TattoistDetailsTop">
+          <div className="personal-container">
+            <img src={picture} alt={fullName} />
+            <h3>{fullName}</h3>
+          </div>
+          <div className="adress-container">
+            <h4 className="adress">adress: {adress}</h4>
+            <div className="MapConteiner">
+              <MapContainer
+                coordinates={coordinates}
+                fullName={this.state.fullName}
+              />
             </div>
-          );
-        })}
-        <MapContainer
-          coordinates={coordinates}
-          fullName={this.state.fullName}
-        />
+          </div>
+        </div>
+
+        <h4>{description}</h4>
+
+        <div className="images-container">
+          {portfolio.map((oneImage, index) => {
+            return (
+              <div key={index}>
+                <img className="image" src={oneImage} alt={oneImage} />
+              </div>
+            );
+          })}
+        </div>
       </section>
     );
   }
