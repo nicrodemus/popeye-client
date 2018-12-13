@@ -16,13 +16,19 @@ class TattoistSignupPage extends Component {
       confirmPassword: "",
       phoneNumber: "",
       adress: "",
-      currentUser: null
+      coordinates: [],
+      currentUser: null,
     };
   }
 
   genericSync(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  }
+
+  syncCoordinates(latLng) {
+    const { lat, lng } = latLng;
+    this.setState({ coordinates: [lng, lat] })
   }
 
   handleSubmit(event) {
@@ -139,11 +145,7 @@ class TattoistSignupPage extends Component {
             <label>
               <LocationSearchInput
                 className="margin-top-20"
-                value={this.state.adress}
-                onChange={event => this.genericSync(event)}
-                type="text"
-                name="adress"
-                placeholder="your adress"
+                handleEvent={latLng => this.syncCoordinates(latLng)}
               />
             </label>
 

@@ -40,7 +40,7 @@ class LocationSearchInput extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <div className="search-bar">
+      <div className={`search-bar ${this.props.className}`}>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
