@@ -27,6 +27,8 @@ import PlacesAutocomplete from "react-places-autocomplete";
 // -------------------------------------------
 import SearchBar from "./components/SearchBar.js";
 import SearchResult from "./components/SearchResult.js";
+//------------------------------------
+import Profile from "./components/ProfilePage/ProfilePage.js";
 
 class App extends Component {
   constructor(props) {
@@ -116,6 +118,9 @@ class App extends Component {
                 <NavLink exact to="/">
                   <img src="/images/logo-header.svg" alt="logo" />
                 </NavLink>
+                <NavLink exact to="/tattoist-profile">
+                  profile page
+                </NavLink>
 
                 {this.state.currentUser ? (
                   <span className="flex">
@@ -197,10 +202,16 @@ class App extends Component {
               )}
             />
 
-            <Route path="/tattoist-profile" component={TattoistDetails} />
+            {/* <Route path="/tattoist-profile" component={Profile} /> */}
             <Route
-              path="/tattoistList/:tattoistId"
-              component={TattoistDetails}
+              path="/tattoist-profile"
+              render={() =>
+                this.state.currentUser ? (
+                  <Profile currentuser={this.state.currentUser} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
             {/* Use "render" instead of "component" to pass props */}
 
