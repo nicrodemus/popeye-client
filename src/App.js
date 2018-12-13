@@ -39,12 +39,12 @@ class App extends Component {
     };
   }
 
-  
-
   // ----------- checkuser------------------------------------
   componentDidMount() {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/checkuser`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/checkuser`, {
+        withCredentials: true
+      })
       .then(response => {
         console.log("Check User", response.data);
         const { userDoc } = response.data;
@@ -85,7 +85,9 @@ class App extends Component {
 
   logoutClick() {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true })
+      .delete(`${process.env.REACT_APP_API_URL}/logout`, {
+        withCredentials: true
+      })
       .then(() => {
         //make "currentUser" empty again (like it was at the start)
         this.syncCurrentUser(null);
@@ -190,6 +192,8 @@ class App extends Component {
           {/* --------------------------------------------------- */}
           <Switch>
             {/* Route is important: allow you to define the URL in "path"*/}
+            {/* Use "render" instead of "component" to pass props */}
+
             <Route
               exact
               path="/"
@@ -199,10 +203,12 @@ class App extends Component {
                     this.syncSearchedLocation(locationSearchDoc)
                   }
                   currentuser={this.state.currentUser}
+                  // component={LandingPage}
                 />
               )}
             />
 
+            {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/tattoist-profile"
               render={() =>
@@ -213,7 +219,6 @@ class App extends Component {
                 )
               }
             />
-            {/* Use "render" instead of "component" to pass props */}
 
             <Route
               path="/tattoistlist"
@@ -278,36 +283,13 @@ class App extends Component {
                 />
               )}
             />
-
+            {/* --------------------------- reset password ------------------------- */}
             <Route path="/reset-password" component={ResetPassword} />
+
             <Route
               path="/calendar"
               render={() => <Dnd currentUser={this.state.currentUser} />}
               component={Dnd}
-            />
-            {/* Use "render" instead of "component" to pass props */}
-            <Route
-              path="/signup-page"
-              render={() => (
-                <SignupPage
-                  currentuser={this.state.currentUser}
-                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
-                />
-              )}
-            />
-
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <LandingPage
-                  onUserInput={locationSearchDoc =>
-                    this.syncSearchedLocation(locationSearchDoc)
-                  }
-                  currentuser={this.state.currentUser}
-                  component={LandingPage}
-                />
-              )}
             />
 
             <Route
@@ -319,16 +301,6 @@ class App extends Component {
                   }
                   currentuser={this.state.currentUser}
                   component={SearchBar}
-                />
-              )}
-            />
-
-            <Route
-              path="/signup-page"
-              render={() => (
-                <SignupPage
-                  currentuser={this.state.currentUser}
-                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
                 />
               )}
             />
