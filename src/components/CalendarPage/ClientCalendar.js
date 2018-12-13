@@ -51,7 +51,7 @@ MyWeek.navigate = (date, action) => {
 }
 
 MyWeek.title = date => {
-  return `My awesome week: ${date.toLocaleDateString()}`
+  return `Week: ${date.toLocaleDateString()}`
 }
 
 
@@ -74,7 +74,7 @@ class CustomView extends React.Component {
 
   componentDidMount(){
     const tattoistId = this.props.tattoist._id;
-    axios.get(`${process.env.REACT_APP_API_URL}/appointments/${tattoistId}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/appointments/${tattoistId}`, { withCredentials: true })
     .then(response => {
       console.log("HEZHEZ",response.data)
       const appointmentsList = response.data.appointmentsArray.map( oneAppointment => {

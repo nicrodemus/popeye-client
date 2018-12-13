@@ -10,6 +10,7 @@ class Profile extends Component {
     console.log(this.state);
   }
 
+
   // componentDidMount() {
   //   if (this.props.currentUser) {
   //     const { _id } = this.props.currentUser;
@@ -40,7 +41,7 @@ class Profile extends Component {
     return (
       <section className="profile-section">
         <h4> hello Tatooist: {fullName}</h4>;
-        <Dnd />
+        <Dnd currentUser={this.props.currentuser} />
       </section>
     );
   }
