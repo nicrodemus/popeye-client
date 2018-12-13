@@ -40,10 +40,12 @@ class App extends Component {
     };
   }
 
+  
+
   // ----------- checkuser------------------------------------
   componentDidMount() {
     axios
-      .get("http://localhost:5555/api/checkuser", { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/checkuser`, { withCredentials: true })
       .then(response => {
         console.log("Check User", response.data);
         const { userDoc } = response.data;
@@ -51,7 +53,7 @@ class App extends Component {
 
         // ----------- checkTattoist------------------------------------
         axios
-          .get("http://localhost:5555/api/checkTattoist", {
+          .get(`${process.env.REACT_APP_API_URL}/checkTattoist`, {
             withCredentials: true
           })
           .then(response => {
@@ -84,14 +86,14 @@ class App extends Component {
 
   logoutClick() {
     axios
-      .delete("http://localhost:5555/api/logout", { withCredentials: true })
+      .delete(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true })
       .then(() => {
         //make "currentUser" empty again (like it was at the start)
         this.syncCurrentUser(null);
 
         //--------------tattoist logout-------------------------------------
         axios
-          .delete("http://localhost:5555/api/tattoist-logout", {
+          .delete(`${process.env.REACT_APP_API_URL}/tattoist-logout`, {
             withCredentials: true
           })
           .then(() => {
