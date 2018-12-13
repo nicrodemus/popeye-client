@@ -13,7 +13,7 @@ class Profile extends Component {
   //   if (this.props.currentUser) {
   //     const { _id } = this.props.currentUser;
   //     axios
-  //       .get(`http://localhost:5555/api/tattoist/${_id}`, {
+  //       .get(`${process.env.REACT_APP_API_URL}/tattoist/${_id}`, {
   //         withCredentials: true
   //       })
   //       .then(response => {
