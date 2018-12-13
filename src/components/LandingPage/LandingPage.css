@@ -9,15 +9,12 @@
 
 .search {
   height: 35px;
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 .search-bar {
-  display: flex;
   flex-direction: row-reverse;
-  position: fixed;
   max-height: 30px;
   max-width: 420px;
 }
@@ -35,8 +32,8 @@
 }
 
 .txt-align-center {
-  text-align: center;
-  margin: 0;
+  text-align:center;
+  margin:0;
 }
 
 .pad-top-50px {
@@ -45,4 +42,8 @@
 
 .pad-bttm-50px {
   padding-bottom: 50px;
+}
+
+.b-black {
+  background-color: black
 }

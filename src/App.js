@@ -9,6 +9,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage/HomePage.js";
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import TattoistList from "./components/TattoistList/TattoistList.js";
+import TattoistDetails from "./components/TattoistDetails/TattoistDetails.js"
 // -------------------------------------------
 import SignupPage from "./components/SignupPage/SignupPage.js";
 import LoginPage from "./components/LoginPage/LoginPage.js";
@@ -20,7 +21,6 @@ import TattoistLoginPage from "./components/TattoistLoginPage/TattoistLoginPage.
 // -------------------------------------------
 import MapContainer from "./components/MapContainer.js";
 import GoogleApiWrapperCode from "./components/MapContainer.js";
-import TattoistDetails from "./components/TattoistDetails.js";
 import Dnd from "./components/CalendarPage/Calendar.js";
 import ClientView from "./components/CalendarPage/ClientCalendar";
 import PlacesAutocomplete from "react-places-autocomplete";
@@ -108,7 +108,7 @@ class App extends Component {
 
   render() {
     return (
-      <section>
+      <div>
         <div className="App">
           {this.props.location.pathname !== "/login-page" &&
             this.props.location.pathname !== "/tattoist-login-page" && (
@@ -197,7 +197,7 @@ class App extends Component {
               )}
             />
 
-            <Route path="/mapContainer" component={MapContainer} />
+            <Route path="/tattoist-profile" component={TattoistDetails} />
             <Route
               path="/tattoistList/:tattoistId"
               component={TattoistDetails}
@@ -331,7 +331,10 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </div>
-      </section>
+        <footer>
+Made with ❤️ @ Ironhack
+        </footer>
+      </div>
     );
   }
 }

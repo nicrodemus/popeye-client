@@ -40,7 +40,7 @@ class TattoistLoginPage extends Component {
   render() {
     // check currentUser (received from App.js)
     if (this.props.currentUser) {
-      return <Redirect to="/" />;
+      return <Redirect to="/tattoist-profile" />;
     }
     return (
       <section className="TattoistLoginPage hei-100vh">
