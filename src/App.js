@@ -197,7 +197,7 @@ class App extends Component {
               )}
             />
 
-            <Route path="/tattoist-profile" component={TattoistDetails} />
+            <Route path="/tattoist-details" component={TattoistDetails} />
             <Route
               path="/tattoistList/:tattoistId"
               component={TattoistDetails}
@@ -205,17 +205,17 @@ class App extends Component {
             {/* Use "render" instead of "component" to pass props */}
 
             <Route
-              path="/tattoistlist"
-              render={() =>
+              path="/tattoist-list"
+              render={() => (
                 this.state.citySearchQuery ? (
-                  <TattoistList
-                    searchedLocation={this.state.citySearchQuery}
-                    currentuser={this.state.currentUser}
-                  />
+                <TattoistList
+                  searchedLocation={this.state.citySearchQuery}
+                  currentuser={this.state.currentUser}
+                />
                 ) : (
                   <Redirect to="/" />
                 )
-              }
+              )}
             />
 
             <Route path="/MapContainer" component={MapContainer} />
