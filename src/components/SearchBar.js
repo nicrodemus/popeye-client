@@ -63,7 +63,7 @@ class LocationSearchInput extends React.Component {
                   })}
                 />
                 <button className="searchButton margin-top-20">
-                  <Link className="white" to="/tattoistlist"> Search your tatooist </Link>
+                  <Link className="white" to="/tattoist-list"> Search your tatooist </Link>
                 </button>
               </form>
 
