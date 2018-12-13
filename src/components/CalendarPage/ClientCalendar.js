@@ -72,20 +72,22 @@ class CustomView extends React.Component {
   }
 
 
-  // componentDidMount(){
-  //   // const tattoistId = this.props.tattoist._id;
-  //   // axios.get(`http://localhost:5555/api/appointments/${tattoistId}`)
-  //   // .then(response => {
-  //   //   console.log(response.data)
-  //   //   const appointmentsList = response.data.appointmentsArray.map( oneAppointment => {
-  //   //     oneAppointment.start = oneAppointment.startDate;
-  //   //     oneAppointment.end = oneAppointment.endDate;
-  //   //     return oneAppointment 
-  //   //   })
-  //   //   this.setState({events: appointmentsList})
-  //   // })
-  //   // .catch(err => console.log(err))
-  // }
+  componentDidMount(){
+    const tattoistId = this.props.tattoist._id;
+    axios.get(`http://localhost:5555/api/appointments/${tattoistId}`)
+    .then(response => {
+      console.log("HEZHEZ",response.data)
+      const appointmentsList = response.data.appointmentsArray.map( oneAppointment => {
+        oneAppointment.start = new Date(oneAppointment.startDate);
+        oneAppointment.end = new Date(oneAppointment.endDate);
+        return oneAppointment 
+      })
+      console.log("my appointment list",appointmentsList)
+      this.setState({events: appointmentsList})
+    })
+    .catch(err => console.log(err))
+  }
+
   
   handleSelect = ({ start, end }) => {
     const title = window.prompt('Name your appointement');
@@ -96,6 +98,7 @@ class CustomView extends React.Component {
       const slot = {startDate, endDate, title}
       axios.post(`http://localhost:5555/api/eventcreated/${tattoistId}`, slot, {withCredentials: true} )
       .then(response => {
+        console.log("response client",response)
         
         this.setState({
           events: [
