@@ -67,10 +67,11 @@ class TattoistList extends Component {
                   <button className="appointmentList">
                     TAKE AN APPOINTMENT
                   </button>
-                  <CustomView
+
+                  {/* <CustomView
                     tattoist={oneTattoist}
                     className="calendar-client"
-                  />
+                  /> */}
                 </li>
               );
             })}
