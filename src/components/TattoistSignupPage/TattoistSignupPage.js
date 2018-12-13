@@ -54,11 +54,7 @@ class TattoistSignupPage extends Component {
 
   render() {
     if (this.props.currentUser) {
-<<<<<<< HEAD
-      return <Redirect to="/" />;
-=======
-      return <Redirect to="/tattoist-profile" />
->>>>>>> 6d401bca34188d105a5b224a82d8f838caa5aadf
+      return <Redirect to="/tattoist-profile" />;
       //   <section className="SignupPage">
       //     <h2>You are signed up!</h2>
       //     <p>Welcome, {this.props.currentUser.name}!</p>
@@ -141,7 +137,7 @@ class TattoistSignupPage extends Component {
               />
             </label>
             <label>
-              <input
+              <LocationSearchInput
                 className="margin-top-20"
                 value={this.state.adress}
                 onChange={event => this.genericSync(event)}

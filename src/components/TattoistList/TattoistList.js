@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import axios from "axios";
 import "./TattoistList.css";
 import { Link } from "react-router-dom";
