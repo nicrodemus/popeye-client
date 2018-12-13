@@ -26,12 +26,8 @@ import ClientView from "./components/CalendarPage/ClientCalendar";
 import PlacesAutocomplete from "react-places-autocomplete";
 // -------------------------------------------
 import SearchBar from "./components/SearchBar.js";
-<<<<<<< HEAD
-=======
-import SearchResult from "./components/SearchResult.js";
 //------------------------------------
 import Profile from "./components/ProfilePage/ProfilePage.js";
->>>>>>> 79c8e91628951caf0820ff0c277389837eb9dc56
 
 class App extends Component {
   constructor(props) {
