@@ -54,11 +54,11 @@ class TattoistPersonalPage extends Component {
   }
   render() {
     const {
-      //picture,
+      picture,
       fullName,
       adress,
       description,
-      //portfolio,
+      portfolio,
       coordinates
     } = this.state;
 

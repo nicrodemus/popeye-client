@@ -24,7 +24,7 @@ class LandingPage extends Component {
             Take an Appointment with your favourite Tattoist!
           </h2>
           <p className="white txt-align-center">It's simple, quick and free</p>
-          <div className="search">
+          <div className="search flex">
             <LocationSearchInput
               handleEvent={coordinates => this.handleEvent(coordinates)}
             />
@@ -91,8 +91,8 @@ class LandingPage extends Component {
           </div>
         </div>
 
-        <footer>
-          <p>text</p>
+        <footer className="b-black">
+          <p>footer</p>
         </footer>
       </section>
     );
