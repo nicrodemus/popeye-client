@@ -54,7 +54,7 @@ class TattoistSignupPage extends Component {
 
   render() {
     if (this.props.currentUser) {
-      return <Redirect to="/" />
+      return <Redirect to="/tattoist-profile" />
       //   <section className="SignupPage">
       //     <h2>You are signed up!</h2>
       //     <p>Welcome, {this.props.currentUser.name}!</p>

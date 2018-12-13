@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import MapContainer from "./MapContainer.js";
+import MapContainer from "../MapContainer.js";
 import "./TattoistDetails.css";
 //import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 class TattoistPersonalPage extends Component {
@@ -19,8 +19,6 @@ class TattoistPersonalPage extends Component {
 
   componentDidMount() {
     const { params } = this.props.match;
-
-    console.log("blah DID MOUNT", this.state);
 
     axios
       .get(`http://localhost:5555/api/tattoistList/${params.tattoistId}`, {
@@ -53,6 +51,7 @@ class TattoistPersonalPage extends Component {
         alert("Something wrong with the Tattoist details");
       });
   }
+
   render() {
     const {
       picture,
@@ -63,7 +62,7 @@ class TattoistPersonalPage extends Component {
       coordinates
     } = this.state;
 
-    console.log(portfolio);
+    
     return (
       <section className="TattoistDetails">
         <h2>TattoistDetails</h2>
