@@ -21,7 +21,7 @@ class TattoistPersonalPage extends Component {
     const { params } = this.props.match;
 
     axios
-      .get(`http://localhost:5555/api/tattoistList/${params.tattoistId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/tattoistList/${params.tattoistId}`, {
         withCredentials: true
       })
       .then(response => {
