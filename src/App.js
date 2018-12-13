@@ -26,7 +26,6 @@ import ClientView from "./components/CalendarPage/ClientCalendar";
 import PlacesAutocomplete from "react-places-autocomplete";
 // -------------------------------------------
 import SearchBar from "./components/SearchBar.js";
-import SearchResult from "./components/SearchResult.js";
 //------------------------------------
 import Profile from "./components/ProfilePage/ProfilePage.js";
 
@@ -324,18 +323,6 @@ class App extends Component {
               )}
             />
 
-            <Route path="/search-result" component={SearchResult} />
-
-            {/* <Route
-              path="/search"
-              render={() => (
-                <SearchBar
-                  currentuser={this.state.currentUser}
-                  searchQuery={placeDoc => this.syncSearchQuery(placeDoc)}
-                />
-              )}
-            /> */}
-            {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
               render={() => (
@@ -351,7 +338,9 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </div>
-        <footer>Made with ❤️ @ Ironhack</footer>
+
+        {/* --------------------------- footer ------------------------- */}
+        <footer>Made with ❤️ and bugs at IRONHACK</footer>
       </div>
     );
   }

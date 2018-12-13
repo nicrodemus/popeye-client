@@ -13,11 +13,6 @@ h3 {
   margin: 0;
 }
 
-footer {
-  bottom:0;
-  width:100%;
-}
-
 /* .HomePage {
   background-image: url(`../public/images/BackGroundSubHeader.svg`);
   background-size: cover;
@@ -112,4 +107,5 @@ footer{
   justify-content: center;
   font-family: 'Nunito';
   font-weight: bolder;
+  align-items: center;
 }

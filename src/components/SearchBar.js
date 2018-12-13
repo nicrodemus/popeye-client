@@ -62,9 +62,6 @@ class LocationSearchInput extends React.Component {
                     className: ""
                   })}
                 />
-                <button className="searchButton margin-top-20">
-                  <Link className="white" to="/tattoist-list"> Search your tatooist </Link>
-                </button>
               </form>
 
               <div className="autocomplete-dropdown-container">

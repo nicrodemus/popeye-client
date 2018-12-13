@@ -48,14 +48,40 @@ body {
   padding-bottom: 50px;
 }
 
+.pad-l-200px {
+  padding-left: 200px;
+}
+
+.pad-r-200px {
+  padding-right: 200px;
+}
+
 .b-black {
   background-color: black;
+}
+
+.b-white {
+  background-color: white;
+}
+
+.searchButton{
+  width:100px;
+  margin-bottom: 15px;
+}
+
+.width-25x{
+  width:25%;
+}
+
+.height-80vh {
+ height: 80vh;
+}
+
+.size-50px {
+font-size:50px;
 }
 .searchButton {
   width: 100px;
   margin-bottom: 15px;
 }
 
-.pad-top-50px {
-  background-color: white;
-}
