@@ -20,8 +20,8 @@ class LandingPage extends Component {
     console.log(this.state);
     return (
       <section>
-        <div className="top">
-          <h2 className="white txt-align-center">
+        <div className="top height-80vh">
+          <h2 className="white txt-align-center size-50px pad-top-50px">
             Take an Appointment with your favourite Tattoist!
           </h2>
           <p className="white txt-align-center">It's simple, quick and free</p>
@@ -29,22 +29,25 @@ class LandingPage extends Component {
             <LocationSearchInput
               handleEvent={coordinates => this.handleEvent(coordinates)}
             />
-             <button className="searchButton margin-top-20">
-                  <Link className="white" to="/tattoistlist"> Search your tatooist </Link>
-                </button>
+            <button className="searchButton margin-top-20">
+              <Link className="white" to="/tattoistlist">
+                {" "}
+                Search your tatooist{" "}
+              </Link>
+            </button>
           </div>
         </div>
 
-        <div className="pad-top-50px pad-bttm-50pxn">
+        <div className="pad-top-50px pad-bttm-50px b-white height-80vh">
           <div className="flex j-cont-center">
-            <h2>Are You a Tattoist?</h2>
+            <h2 className="size-50px">Are You a Tattoist?</h2>
           </div>
           <div className="flex j-cont-center">
             <p>Discover the new way of making an appointment.</p>
           </div>
 
-          <div className="flex j-cont-center">
-            <div className="padding-l-r-14 block ">
+          <div className="flex j-cont-center pad-top-50px pad-r-200px pad-l-200px">
+            <div className="padding-l-r-14 block width-25x">
               <div className="flex j-cont-center">
                 <img
                   className="w-h-100px"
@@ -56,7 +59,7 @@ class LandingPage extends Component {
                 <p>Save 30% time of secretaryship</p>
               </div>
             </div>
-            <div className="padding-l-r-14 block">
+            <div className="padding-l-r-14 block width-25x">
               <div className="flex j-cont-center">
                 <img
                   className="w-h-100px"
@@ -68,7 +71,7 @@ class LandingPage extends Component {
                 <p>Reduce the number of no-shows in your practice</p>
               </div>
             </div>
-            <div className="padding-l-r-14 block">
+            <div className="padding-l-r-14 block width-25x">
               <div className="flex j-cont-center">
                 <img
                   className="w-h-100px"
@@ -80,7 +83,7 @@ class LandingPage extends Component {
                 <p>Find clients more easily</p>
               </div>
             </div>
-            <div className="padding-l-r-14 block ">
+            <div className="padding-l-r-14 block width-25x">
               <div className="flex j-cont-center">
                 <img
                   className="w-h-100px"
@@ -94,8 +97,6 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
-
-        <footer className="b-black" />
       </section>
     );
   }
