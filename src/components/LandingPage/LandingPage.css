@@ -9,15 +9,12 @@
 
 .search {
   height: 35px;
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 .search-bar {
-  display: flex;
   flex-direction: row-reverse;
-  position: fixed;
   max-height: 30px;
   max-width: 420px;
 }

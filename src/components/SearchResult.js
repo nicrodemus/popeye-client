@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class SearchResult extends Component {
   render() {
     return (
-      <section className="SearResult">
+      <section className="SearchResult">
 
       </section>
     );
