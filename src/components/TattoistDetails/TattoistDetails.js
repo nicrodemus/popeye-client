@@ -21,7 +21,7 @@ class TattoistPersonalPage extends Component {
     const { params } = this.props.match;
 
     axios
-      .get(`http://localhost:5555/api/tattoistList/${params.tattoistId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/tattoistList/${params.tattoistId}`, {
         withCredentials: true
       })
       .then(response => {
@@ -61,7 +61,6 @@ class TattoistPersonalPage extends Component {
       coordinates
     } = this.state;
 
-    
     return (
       <section className="TattoistDetails">
         <h2>TattoistDetails</h2>

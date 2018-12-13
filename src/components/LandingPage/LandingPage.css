@@ -1,3 +1,7 @@
+body {
+  height: 300px;
+}
+
 .top {
   background-image: url("/images/BackgroundSubHeader.svg");
   background-size: cover;
@@ -32,8 +36,8 @@
 }
 
 .txt-align-center {
-  text-align:center;
-  margin:0;
+  text-align: center;
+  margin: 0;
 }
 
 .pad-top-50px {
@@ -53,7 +57,7 @@
 }
 
 .b-black {
-  background-color: black
+  background-color: black;
 }
 
 .b-white {
@@ -75,4 +79,12 @@
 
 .size-50px {
 font-size:50px;
+}
+.searchButton {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.pad-top-50px {
+  background-color: white;
 }

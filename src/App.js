@@ -26,6 +26,12 @@ import ClientView from "./components/CalendarPage/ClientCalendar";
 import PlacesAutocomplete from "react-places-autocomplete";
 // -------------------------------------------
 import SearchBar from "./components/SearchBar.js";
+<<<<<<< HEAD
+=======
+import SearchResult from "./components/SearchResult.js";
+//------------------------------------
+import Profile from "./components/ProfilePage/ProfilePage.js";
+>>>>>>> 79c8e91628951caf0820ff0c277389837eb9dc56
 
 class App extends Component {
   constructor(props) {
@@ -37,10 +43,12 @@ class App extends Component {
     };
   }
 
+  
+
   // ----------- checkuser------------------------------------
   componentDidMount() {
     axios
-      .get("http://localhost:5555/api/checkuser", { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/checkuser`, { withCredentials: true })
       .then(response => {
         console.log("Check User", response.data);
         const { userDoc } = response.data;
@@ -48,7 +56,7 @@ class App extends Component {
 
         // ----------- checkTattoist------------------------------------
         axios
-          .get("http://localhost:5555/api/checkTattoist", {
+          .get(`${process.env.REACT_APP_API_URL}/checkTattoist`, {
             withCredentials: true
           })
           .then(response => {
@@ -81,14 +89,14 @@ class App extends Component {
 
   logoutClick() {
     axios
-      .delete("http://localhost:5555/api/logout", { withCredentials: true })
+      .delete(`${process.env.REACT_APP_API_URL}/logout`, { withCredentials: true })
       .then(() => {
         //make "currentUser" empty again (like it was at the start)
         this.syncCurrentUser(null);
 
         //--------------tattoist logout-------------------------------------
         axios
-          .delete("http://localhost:5555/api/tattoist-logout", {
+          .delete(`${process.env.REACT_APP_API_URL}/tattoist-logout`, {
             withCredentials: true
           })
           .then(() => {
@@ -114,6 +122,9 @@ class App extends Component {
               <nav className="navbar-user-dropdown flex">
                 <NavLink exact to="/">
                   <img src="/images/logo-header.svg" alt="logo" />
+                </NavLink>
+                <NavLink exact to="/tattoist-profile">
+                  profile page
                 </NavLink>
 
                 {this.state.currentUser ? (
@@ -196,10 +207,15 @@ class App extends Component {
               )}
             />
 
-            <Route path="/tattoist-details" component={TattoistDetails} />
             <Route
-              path="/tattoistList/:tattoistId"
-              component={TattoistDetails}
+              path="/tattoist-profile"
+              render={() =>
+                this.state.currentUser ? (
+                  <Profile currentuser={this.state.currentUser} />
+                ) : (
+                  <Redirect to="/" />
+                )
+              }
             />
             {/* Use "render" instead of "component" to pass props */}
 
