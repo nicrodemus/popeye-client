@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./LandingPage.css";
 import LocationSearchInput from "../SearchBar.js";
 class LandingPage extends Component {
@@ -28,6 +29,9 @@ class LandingPage extends Component {
             <LocationSearchInput
               handleEvent={coordinates => this.handleEvent(coordinates)}
             />
+             <button className="searchButton margin-top-20">
+                  <Link className="white" to="/tattoistlist"> Search your tatooist </Link>
+                </button>
           </div>
         </div>
 
@@ -91,9 +95,7 @@ class LandingPage extends Component {
           </div>
         </div>
 
-        <footer className="b-black">
-        
-        </footer>
+        <footer className="b-black" />
       </section>
     );
   }

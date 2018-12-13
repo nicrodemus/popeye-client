@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 
 import axios from "axios";
 import "./App.css";
@@ -9,7 +9,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage/HomePage.js";
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import TattoistList from "./components/TattoistList/TattoistList.js";
-import TattoistDetails from "./components/TattoistDetails/TattoistDetails.js"
+import TattoistDetails from "./components/TattoistDetails/TattoistDetails.js";
 // -------------------------------------------
 import SignupPage from "./components/SignupPage/SignupPage.js";
 import LoginPage from "./components/LoginPage/LoginPage.js";
@@ -207,10 +207,14 @@ class App extends Component {
             <Route
               path="/tattoist-list"
               render={() => (
+                this.state.citySearchQuery ? (
                 <TattoistList
                   searchedLocation={this.state.citySearchQuery}
                   currentuser={this.state.currentUser}
                 />
+                ) : (
+                  <Redirect to="/" />
+                )
               )}
             />
 
@@ -265,7 +269,11 @@ class App extends Component {
             />
 
             <Route path="/reset-password" component={ResetPassword} />
-            <Route path="/calendar" render={()=><Dnd currentUser={this.state.currentUser}/>}   component={Dnd} />
+            <Route
+              path="/calendar"
+              render={() => <Dnd currentUser={this.state.currentUser} />}
+              component={Dnd}
+            />
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/signup-page"
@@ -331,9 +339,7 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </div>
-        <footer>
-Made with ❤️ @ Ironhack
-        </footer>
+        <footer>Made with ❤️ @ Ironhack</footer>
       </div>
     );
   }

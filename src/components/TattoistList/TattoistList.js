@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import axios from "axios";
 import "./TattoistList.css";
 import { Link } from "react-router-dom";
@@ -64,7 +65,7 @@ class TattoistList extends Component {
                   </div>
                   {/* <h4>{oneTattoist.geometry.coordinates[0]}</h4> */}
                   <button className="appointmentList">
-                    Take An Appointment
+                    TAKE AN APPOINTMENT
                   </button>
                   <CustomView
                     tattoist={oneTattoist}

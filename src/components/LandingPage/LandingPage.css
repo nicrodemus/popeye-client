@@ -47,3 +47,11 @@
 .b-black {
   background-color: black
 }
+.searchButton{
+  width:100px;
+  margin-bottom: 15px;
+}
+
+.pad-top-50px{
+  background-color: white;
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./TattoistSignupPage.css";
 import { Redirect, NavLink } from "react-router-dom";
+import LocationSearchInput from "../SearchBar.js";
 
 class TattoistSignupPage extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class TattoistSignupPage extends Component {
       originalPassword: "",
       confirmPassword: "",
       phoneNumber: "",
+      adress: "",
       currentUser: null
     };
   }
@@ -25,36 +27,34 @@ class TattoistSignupPage extends Component {
 
   handleSubmit(event) {
     const { originalPassword, confirmPassword } = this.state;
-    
+
     event.preventDefault();
 
     if (originalPassword !== confirmPassword) {
-
-      alert("Passwords don't match.")
+      alert("Passwords don't match.");
     } else {
       // make API call
- 
-    axios
-      .post("http://localhost:5555/api/tattoist-signup", this.state, {
-        withCredentials: true
-      })
-      .then(response => {
-        console.log("Signup Page", response.data);
-        const { userDoc } = response.data;
-        // send "userDoc" to the App.js function that changes "currentUser"
-        this.props.onUserChange(userDoc);
-      })
-      .catch(err => {
-        console.log("Signup Page Error", err);
-        alert("Sorry! Something went wrong. Tattoist signup");
-      });
+
+      axios
+        .post("http://localhost:5555/api/tattoist-signup", this.state, {
+          withCredentials: true
+        })
+        .then(response => {
+          console.log("Signup Page", response.data);
+          const { userDoc } = response.data;
+          // send "userDoc" to the App.js function that changes "currentUser"
+          this.props.onUserChange(userDoc);
+        })
+        .catch(err => {
+          console.log("Signup Page Error", err);
+          alert("Sorry! Something went wrong. Tattoist signup");
+        });
     }
   }
 
-
   render() {
     if (this.props.currentUser) {
-      return <Redirect to="/tattoist-profile" />
+      return <Redirect to="/tattoist-profile" />;
       //   <section className="SignupPage">
       //     <h2>You are signed up!</h2>
       //     <p>Welcome, {this.props.currentUser.name}!</p>
@@ -65,13 +65,12 @@ class TattoistSignupPage extends Component {
     return (
       <section className="TattoistSignupPage">
         <div className="signup-div">
-        <h2>Create a Tattoist Account</h2>
-        
+          <h2>Create a Tattoist Account</h2>
+
           <form
             className="signup-form pad-40"
             onSubmit={event => this.handleSubmit(event)}
           >
-
             <label>
               <input
                 className=""
@@ -96,7 +95,7 @@ class TattoistSignupPage extends Component {
 
             <label>
               <input
-               className="margin-top-20"
+                className="margin-top-20"
                 value={this.state.email}
                 onChange={event => this.genericSync(event)}
                 type="email"
@@ -107,7 +106,7 @@ class TattoistSignupPage extends Component {
 
             <label>
               <input
-               className="margin-top-20"
+                className="margin-top-20"
                 value={this.state.city}
                 onChange={event => this.genericSync(event)}
                 type="text"
@@ -137,16 +136,25 @@ class TattoistSignupPage extends Component {
                 placeholder="Repeat Password"
               />
             </label>
+            <label>
+              <LocationSearchInput
+                className="margin-top-20"
+                value={this.state.adress}
+                onChange={event => this.genericSync(event)}
+                type="text"
+                name="adress"
+                placeholder="your adress"
+              />
+            </label>
 
             <button className="margin-top-20">
               <p>Sign Up</p>
             </button>
           </form>
 
-            <p>
-              <NavLink to="/signup-page"> Sign Up</NavLink> as a Client
-            </p>
-
+          <p>
+            <NavLink to="/signup-page"> Sign Up</NavLink> as a Client
+          </p>
         </div>
       </section>
     );
