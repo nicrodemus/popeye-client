@@ -22,7 +22,7 @@ class TattoistList extends Component {
   componentDidMount() {
     axios
       .post(
-        "http://localhost:5555/api/tattoistlist",
+        "http://localhost:5555/api/tattoist-list",
         this.props.searchedLocation,
         { withCredentials: true }
       )

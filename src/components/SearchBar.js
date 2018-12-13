@@ -40,7 +40,7 @@ class LocationSearchInput extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <div className="search-bar">
+      <div className={`search-bar ${this.props.className}`}>
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
@@ -62,9 +62,9 @@ class LocationSearchInput extends React.Component {
                     className: ""
                   })}
                 />
-                {/* <button className="searchButton margin-top-20">
-                  <Link className="white" to="/tattoistlist"> Search your tatooist </Link>
-                </button> */}
+                <button className="searchButton margin-top-20">
+                  <Link className="white" to="/tattoist-list"> Search your tatooist </Link>
+                </button>
               </form>
 
               <div className="autocomplete-dropdown-container">

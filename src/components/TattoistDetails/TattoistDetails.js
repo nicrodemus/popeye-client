@@ -25,7 +25,7 @@ class TattoistPersonalPage extends Component {
         withCredentials: true
       })
       .then(response => {
-        console.log("Tattoist details", response.data);
+
         const {
           portfolio,
           picture,
@@ -34,6 +34,7 @@ class TattoistPersonalPage extends Component {
           description,
           geometry
         } = response.data;
+        console.log("response from database front", response.data)
         this.setState(
           {
             portfolio,
@@ -43,11 +44,9 @@ class TattoistPersonalPage extends Component {
             description,
             coordinates: geometry.coordinates
           },
-          () => console.log("blah AFTER API", this.state)
         );
       })
       .catch(err => {
-        console.log("Tattoist details", err);
         alert("Something wrong with the Tattoist details");
       });
   }

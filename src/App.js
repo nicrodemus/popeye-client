@@ -202,7 +202,6 @@ class App extends Component {
               )}
             />
 
-            {/* <Route path="/tattoist-profile" component={Profile} /> */}
             <Route
               path="/tattoist-profile"
               render={() =>
@@ -216,7 +215,7 @@ class App extends Component {
             {/* Use "render" instead of "component" to pass props */}
 
             <Route
-              path="/tattoistlist"
+              path="/tattoist-list"
               render={() =>
                 this.state.citySearchQuery ? (
                   <TattoistList
