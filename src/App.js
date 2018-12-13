@@ -9,7 +9,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import HomePage from "./components/HomePage/HomePage.js";
 import LandingPage from "./components/LandingPage/LandingPage.js";
 import TattoistList from "./components/TattoistList/TattoistList.js";
-import TattoistDetails from "./components/TattoistDetails/TattoistDetails.js";
+import TattoistPersonalPage from "./components/TattoistDetails/TattoistDetails.js";
 // -------------------------------------------
 import SignupPage from "./components/SignupPage/SignupPage.js";
 import LoginPage from "./components/LoginPage/LoginPage.js";
@@ -219,7 +219,11 @@ class App extends Component {
                 )
               }
             />
-
+            {/* Use "render" instead of "component" to pass props */}
+            <Route
+              path="/tattoistList/:tattoistId"
+              component={TattoistPersonalPage}
+            />
             <Route
               path="/tattoistlist"
               render={() =>
