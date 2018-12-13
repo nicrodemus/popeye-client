@@ -92,7 +92,7 @@ class LandingPage extends Component {
         </div>
 
         <footer className="b-black">
-          <p>footer</p>
+        
         </footer>
       </section>
     );

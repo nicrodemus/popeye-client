@@ -102,3 +102,14 @@ button {
   padding-left: 14px;
   padding-right: 14px;
 }
+
+
+footer{
+  display: flex;
+  background-color: black;
+  color: white;
+  height: 50px;
+  justify-content: center;
+  font-family: 'Nunito';
+  font-weight: bolder;
+}

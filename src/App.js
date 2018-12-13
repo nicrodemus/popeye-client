@@ -108,7 +108,7 @@ class App extends Component {
 
   render() {
     return (
-      <section>
+      <div>
         <div className="App">
           {this.props.location.pathname !== "/login-page" &&
             this.props.location.pathname !== "/tattoist-login-page" && (
@@ -331,7 +331,10 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </div>
-      </section>
+        <footer>
+Made with ❤️ @ Ironhack
+        </footer>
+      </div>
     );
   }
 }
