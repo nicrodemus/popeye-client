@@ -22,7 +22,7 @@ class ResetPassword extends Component {
     event.preventDefault();
 
     axios
-      .post("http://localhost:5555/api/login", this.state, {
+      .post(`${process.env.REACT_APP_API_URL}/login`, this.state, {
         withCredentials: true
       })
       .then(response => {
