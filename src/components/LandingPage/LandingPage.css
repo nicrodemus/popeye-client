@@ -80,6 +80,11 @@ body {
 .size-50px {
 font-size:50px;
 }
+
+.size-20px {
+  font-size:20px;
+  }
+
 .searchButton {
   width: 100px;
   margin-bottom: 15px;

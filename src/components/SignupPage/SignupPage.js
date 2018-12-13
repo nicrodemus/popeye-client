@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./SignupPage.css";
 import { Redirect, NavLink } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
+// import { GoogleLogin } from "react-google-login";
 import { PostData } from "../../PostData.js";
 
 class SignupPage extends Component {
@@ -26,30 +26,30 @@ class SignupPage extends Component {
     this.setState({ [name]: value });
   }
 
-  signupWithGoogle(res, type) {
-    //axios request
+  // signupWithGoogle(res, type) {
+  //   //axios request
 
-    const googleInfo = {
-      email: res.profileObj.email,
-      name: res.profileObj.givenName,
-      surname: res.profileObj.familyName
-    };
+  //   const googleInfo = {
+  //     email: res.profileObj.email,
+  //     name: res.profileObj.givenName,
+  //     surname: res.profileObj.familyName
+  //   };
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/api/google/google-signup`, googleInfo, {
-        withCredentials: true
-      })
-      .then(response => {
-        console.log("Signup Page", response.data);
-        const { userDoc } = response.data;
-        // send "userDoc" to the App.js function that changes "currentUser"
-        this.props.onUserChange(userDoc);
-      })
-      .catch(err => {
-        console.log("Signup Page Error", err);
-        alert("Sorry! Something went wrong. Google client signup");
-      });
-  }
+  //   axios
+  //     .post(`${process.env.REACT_APP_API_URL}/api/google/google-signup`, googleInfo, {
+  //       withCredentials: true
+  //     })
+  //     .then(response => {
+  //       console.log("Signup Page", response.data);
+  //       const { userDoc } = response.data;
+  //       // send "userDoc" to the App.js function that changes "currentUser"
+  //       this.props.onUserChange(userDoc);
+  //     })
+  //     .catch(err => {
+  //       console.log("Signup Page Error", err);
+  //       alert("Sorry! Something went wrong. Google client signup");
+  //     });
+  // }
 
   handleSubmit(event) {
     const { originalPassword, confirmPassword } = this.state;
@@ -79,15 +79,15 @@ class SignupPage extends Component {
   }
 
   render() {
-    const errorGoogle = response => {
-      console.log("fail google console", response);
-      this.signupWithGoogle(response, " fail google");
-    };
+    // const errorGoogle = response => {
+    //   console.log("fail google console", response);
+    //   this.signupWithGoogle(response, " fail google");
+    // };
 
-    const responseGoogle = response => {
-      console.log("google console", response);
-      this.signupWithGoogle(response, "google");
-    };
+    // const responseGoogle = response => {
+    //   console.log("google console", response);
+    //   this.signupWithGoogle(response, "google");
+    // };
 
     if (this.props.currentUser) {
       return <Redirect to="/" />;
@@ -176,14 +176,14 @@ class SignupPage extends Component {
             <button className="margin-top-20">
               <p>Sign Up</p>
             </button>
-            <GoogleLogin
+            {/* <GoogleLogin
               className="margin-top-20"
               clientId="269725925185-fum6n1delt2mdkhn2hgj2h2q99eck1rm.apps.googleusercontent.com"
               buttonText="Signup with Google"
               redirectUri=""
               onSuccess={responseGoogle}
               onFailure={errorGoogle}
-            />
+            /> */}
           </form>
 
             <p>

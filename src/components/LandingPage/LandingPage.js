@@ -43,22 +43,10 @@ class LandingPage extends Component {
             <h2 className="size-50px">Are You a Tattoist?</h2>
           </div>
           <div className="flex j-cont-center">
-            <p>Discover the new way of making an appointment.</p>
+            <p className="size-20px">Discover the new way of making an appointment.</p>
           </div>
 
           <div className="flex j-cont-center pad-top-50px pad-r-200px pad-l-200px">
-            <div className="padding-l-r-14 block width-25x">
-              <div className="flex j-cont-center">
-                <img
-                  className="w-h-100px"
-                  src="/images/icons/geolocal.png"
-                  alt=""
-                />
-              </div>
-              <div className="txt-align-center">
-                <p>Save 30% time of secretaryship</p>
-              </div>
-            </div>
             <div className="padding-l-r-14 block width-25x">
               <div className="flex j-cont-center">
                 <img
@@ -68,19 +56,19 @@ class LandingPage extends Component {
                 />
               </div>
               <div className="txt-align-center">
-                <p>Reduce the number of no-shows in your practice</p>
+                <p className="size-20px">Save 30% time of secretaryship</p>
               </div>
             </div>
             <div className="padding-l-r-14 block width-25x">
               <div className="flex j-cont-center">
                 <img
                   className="w-h-100px"
-                  src="/images/icons/star.png"
+                  src="/images/icons/geolocal.png"
                   alt=""
                 />
               </div>
               <div className="txt-align-center">
-                <p>Find clients more easily</p>
+                <p className="size-20px">Reduce the number of no-shows in your practice</p>
               </div>
             </div>
             <div className="padding-l-r-14 block width-25x">
@@ -92,7 +80,19 @@ class LandingPage extends Component {
                 />
               </div>
               <div className="txt-align-center">
-                <p>Provide a new service to your costumers</p>
+                <p className="size-20px">Find clients more easily</p>
+              </div>
+            </div>
+            <div className="padding-l-r-14 block width-25x">
+              <div className="flex j-cont-center">
+                <img
+                  className="w-h-100px"
+                  src="/images/icons/star.png"
+                  alt=""
+                />
+              </div>
+              <div className="txt-align-center">
+                <p className="size-20px">Provide a new service to your costumers</p>
               </div>
             </div>
           </div>
