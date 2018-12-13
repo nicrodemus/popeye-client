@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import "./MapContainer.css";
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -30,34 +31,36 @@ export class MapContainer extends Component {
     const lng = coordinates[0];
     const lat = coordinates[1];
     return (
-      <Map
-        options={{ scrollwheel: false }}
-        google={this.props.google}
-        style={{ width: "40%", height: "60%", position: "relative" }}
-        initialCenter={{
-          lat: 48.864716,
-          lng: 2.349014
-        }}
-        className={"map"}
-        zoom={12}
-      >
-        <Marker
-          title={"The marker`s title will appear as a tooltip."}
-          name={"SOMA"}
-          position={{ lat: lat, lng: lng }}
-          onClick={this.onMarkerClick}
-        />
-
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
+      <div className="MapDiv">
+        <Map
+          options={{ scrollwheel: false }}
+          google={this.props.google}
+          style={{ width: "40%", height: "60%", position: "absolute" }}
+          initialCenter={{
+            lat: 48.864716,
+            lng: 2.349014
+          }}
+          className={"map"}
+          zoom={12}
         >
-          <div>
-            <h1>{this.props.fullName}</h1>
-          </div>
-        </InfoWindow>
-      </Map>
+          <Marker
+            title={"The marker`s title will appear as a tooltip."}
+            name={"SOMA"}
+            position={{ lat: lat, lng: lng }}
+            onClick={this.onMarkerClick}
+          />
+
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h1>{this.props.fullName}</h1>
+            </div>
+          </InfoWindow>
+        </Map>
+      </div>
     );
   }
 }

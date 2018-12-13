@@ -98,14 +98,13 @@ button {
   padding-right: 14px;
 }
 
-
-footer{
+footer {
   display: flex;
   background-color: black;
   color: white;
   height: 50px;
   justify-content: center;
-  font-family: 'Nunito';
+  font-family: "Nunito";
   font-weight: bolder;
   align-items: center;
 }
