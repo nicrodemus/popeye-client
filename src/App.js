@@ -192,6 +192,8 @@ class App extends Component {
           {/* --------------------------------------------------- */}
           <Switch>
             {/* Route is important: allow you to define the URL in "path"*/}
+            {/* Use "render" instead of "component" to pass props */}
+
             <Route
               exact
               path="/"
@@ -201,10 +203,12 @@ class App extends Component {
                     this.syncSearchedLocation(locationSearchDoc)
                   }
                   currentuser={this.state.currentUser}
+                  // component={LandingPage}
                 />
               )}
             />
 
+            {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/tattoist-profile"
               render={() =>
@@ -215,11 +219,15 @@ class App extends Component {
                 )
               }
             />
+<<<<<<< HEAD
             {/* Use "render" instead of "component" to pass props */}
             <Route
               path="/tattoistList/:tattoistId"
               component={TattoistPersonalPage}
             />
+=======
+
+>>>>>>> 809d0083d6db7044742d38dfdddb98a418ab2dc7
             <Route
               path="/tattoistlist"
               render={() =>
@@ -283,36 +291,13 @@ class App extends Component {
                 />
               )}
             />
-
+            {/* --------------------------- reset password ------------------------- */}
             <Route path="/reset-password" component={ResetPassword} />
+
             <Route
               path="/calendar"
               render={() => <Dnd currentUser={this.state.currentUser} />}
               component={Dnd}
-            />
-            {/* Use "render" instead of "component" to pass props */}
-            <Route
-              path="/signup-page"
-              render={() => (
-                <SignupPage
-                  currentuser={this.state.currentUser}
-                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
-                />
-              )}
-            />
-
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <LandingPage
-                  onUserInput={locationSearchDoc =>
-                    this.syncSearchedLocation(locationSearchDoc)
-                  }
-                  currentuser={this.state.currentUser}
-                  component={LandingPage}
-                />
-              )}
             />
 
             <Route
@@ -324,16 +309,6 @@ class App extends Component {
                   }
                   currentuser={this.state.currentUser}
                   component={SearchBar}
-                />
-              )}
-            />
-
-            <Route
-              path="/signup-page"
-              render={() => (
-                <SignupPage
-                  currentuser={this.state.currentUser}
-                  onUserChange={userDoc => this.syncCurrentUser(userDoc)}
                 />
               )}
             />
